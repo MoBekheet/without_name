@@ -1,0 +1,2 @@
+"use strict";var content=$(".site-content"),header=$(".site-header");$(content).clone().prependTo(header).addClass("blurred");var blur="blur(.5em)";$(".blurred").css({background:"#fff","-webkit-filter":"blur(.5em)",filter:"blur(.5em)"}),$(document).scroll(function(){var a=$(this).scrollTop();$(".blurred").css({"-webkit-transform":"translateY(-"+a+"px)",transform:"translateY(-"+a+"px)"})});
+//# sourceMappingURL=main.js.map
