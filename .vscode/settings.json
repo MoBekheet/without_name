@@ -1,3 +1,11 @@
 {
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "liveServer.settings.multiRootWorkspaceName": "project_without_name",
+  "cSpell.words": [
+    "sawip",
+    "swip"
+  ],
+  "cSpell.ignoreWords": [
+    "swip"
+  ]
 }
