@@ -1,11 +1,11 @@
 {
   "presets": [
-    "@babel/preset-env",/*"minify"*/
+    "@babel/preset-env","minify"
   ],
   "plugins": [
     ["@babel/plugin-transform-arrow-functions",{"spec": true}],
     ["@babel/plugin-transform-classes",{"loose": true}],
-    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-proposal-class-properties"]
     // ["transform-remove-console", { "exclude": [ "error", "warn"] }]
   ],
   "comments": false

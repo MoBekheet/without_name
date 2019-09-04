@@ -24,11 +24,19 @@
   calcWinSize();
   body.querySelector("main").style.paddingTop = `${body.querySelector("#backdrop").offsetHeight}px`;
   body.querySelector("aside").style.top = `${body.querySelector("#backdrop").offsetHeight}px`;
-  body.querySelector("#backdrop #hamburger > a").addEventListener("click", _ =>{
-    TweenMax.to(body.querySelector("aside"), .5 ,{
+  body.querySelector("#backdrop #hamburger > a").addEventListener("click", _ => {
+    let test = TweenMax.to(body.querySelector("aside"), .5, {
       right: 0,
       ease: Power1.easeInOut
-    })
+    }).reverse()
+    if (!test.isActive()) {
+      test.reversed(test.reversed())
+      TweenMax.to(body.querySelector("aside"), .5, {
+        right: "-300px",
+        ease: Power1.easeInOut
+      })
+    }
+    
   });
   window.addEventListener('resize', calcWinSize);
 
@@ -97,6 +105,9 @@
       this.openShow()
     }
     displayItem() {
+      TweenMax.to(this.items[0].querySelector(".mask_img"), 0, {
+        width: winSize.width / 2
+      })
       this.items.forEach(item => {
         TweenMax.to(item, 0, {
           delay: 0,
@@ -109,14 +120,14 @@
         delay: 0,
         scale: 1.4,
         y: this.items[0].clientHeight / 5.5,
-        x: winSize.width - this.items[0].clientWidth * 1.25,
+        x: winSize.width - this.items[0].clientWidth,
         ease: Expo.easeInOut
       });
+
       TweenMax.to(this.items[1], 0, {
         scale: 1.3,
-        delay: 0,
-        y: this.items[1].clientHeight / 2.2,
-        x: winSize.width - this.items[1].clientWidth * 3,
+        y: this.items[1].clientHeight / 1.6,
+        x: winSize.width - (this.items[1].clientWidth * this.items.clientWidth),
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 0, {
@@ -136,14 +147,13 @@
         delay: 0,
         scale: 1.4,
         y: this.items[0].clientHeight / 5.5,
-        x: winSize.width - this.items[0].clientWidth * 1.25,
+        x: winSize.width - this.items[0].clientWidth,
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1], 2, {
         scale: 1.3,
-        delay: 0,
         y: this.items[1].clientHeight / 2.2,
-        x: winSize.width - this.items[1].clientWidth * 3,
+        x: winSize.width - this.items[1].clientWidth * 4.2,
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 1, {
@@ -153,6 +163,7 @@
 
       TweenMax.to(this.items[0].querySelector(".mask_img"), 1, {
         boxShadow: "20px 12px 30px rgba(0, 0, 0, 0)",
+        width: winSize.width / 2
       });
     }
     openShow() {

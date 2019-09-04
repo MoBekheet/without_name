@@ -13,7 +13,6 @@ body {
 a {
   text-decoration: none;
 }
-
 main {
   position: fixed;
   height: 100%;
@@ -89,7 +88,7 @@ main {
 }
 
 .item__img {
-  top: calc(-1 * 2px);
+  top: calc(-1 * 10%);
   position: relative;
   will-change: transform;
 }
@@ -105,11 +104,11 @@ main {
   .mask_img {
     width: 300px;
     height: 300px;
-    border-radius: 20%;
-    -webkit-border-radius: 20%;
-    -moz-border-radius: 20%;
-    -ms-border-radius: 20%;
-    -o-border-radius: 20%;
+    // border-radius: 20%;
+    // -webkit-border-radius: 20%;
+    // -moz-border-radius: 20%;
+    // -ms-border-radius: 20%;
+    // -o-border-radius: 20%;
 
     @include media-breakpoint-up(lg) {
       width: 400px;
@@ -194,7 +193,7 @@ nav#backdrop {
 
 
 section#site_of_the_day {
-  padding: 3em 0;
+  // padding: 3em 0;
   position: relative;
 
   a.overlay {
