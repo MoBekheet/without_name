@@ -33,7 +33,6 @@
   window.addEventListener('resize', calcWinSize);
 
 
-
   let mousePos = { x: winSize.width / 2, y: winSize.height / 2 }
   let getMousePos = e => {
     let posX = 0;
@@ -50,32 +49,6 @@
     return { x: posX, y: posY }
   };
   window.addEventListener('mousemove', e => mousePos = getMousePos(e));
-
-
-  // class Items {
-  //   constructor(el) {
-  //     // the .item element
-  //     this.DOM = {
-  //       el: el
-  //     };
-  //     this.DOM.maskImg = this.DOM.el.querySelector(".mask_img");
-  //     this.DOM.image = this.DOM.maskImg.querySelector("img");
-  //     this.observer = new IntersectionObserver((entries) => {
-  //       entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0);
-  //     });
-  //     this.observer.observe(this.DOM.el);
-
-  //     this.initEvents();
-  //   }
-  //   initEvents() {
-  //     window.addEventListener('resize', () => this.resize());
-  //   }
-  //   resize() {
-  //     calcWinSize()
-
-  //   }
-
-  // }
 
   class Slide {
     constructor() {
@@ -288,10 +261,6 @@
         name.animate(0.90);  // Number from 0.0 to 1.0
 
       });
-
-
-
-
     }
   }
 
