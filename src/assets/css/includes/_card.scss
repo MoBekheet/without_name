@@ -229,6 +229,9 @@
       width: 100%; // Don't let their width change
     }
   }
+  @include media-breakpoint-up(md) {
+    column-count: $card-columns-count + 1;
+  }
 }
 
 

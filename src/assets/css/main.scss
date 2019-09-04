@@ -1,3 +1,4 @@
+@import "includes/_main_variables";
 // include => Bootstrap grid
 @import "includes/op_grid";
 // @import url("https://fonts.googleapis.com/css?family=Raleway:400");
@@ -7,12 +8,13 @@ html,
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: 'Tajawal', sans-serif;
+  font-family: $main-font-family;
 }
 
 a {
   text-decoration: none;
 }
+
 main {
   position: fixed;
   height: 100%;
@@ -104,11 +106,6 @@ main {
   .mask_img {
     width: 300px;
     height: 300px;
-    // border-radius: 20%;
-    // -webkit-border-radius: 20%;
-    // -moz-border-radius: 20%;
-    // -ms-border-radius: 20%;
-    // -o-border-radius: 20%;
 
     @include media-breakpoint-up(lg) {
       width: 400px;

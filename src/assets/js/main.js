@@ -126,12 +126,12 @@
 
       TweenMax.to(this.items[1], 0, {
         scale: 1.3,
-        y: this.items[1].clientHeight / 1.6,
-        x: winSize.width - (this.items[1].clientWidth * this.items.clientWidth),
+        y: this.items[1].clientHeight / 2.2,
+        x: winSize.width - (this.items[1].clientWidth * 4.2),
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 0, {
-        boxShadow: "20px 12px 30px rgba(0, 0, 0, 0.28)",
+        boxShadow: "20px 12px 30px rgba(0, 0, 0, 0.40)",
       });
     }
     closeShow() {
@@ -153,14 +153,13 @@
       TweenMax.to(this.items[1], 2, {
         scale: 1.3,
         y: this.items[1].clientHeight / 2.2,
-        x: winSize.width - this.items[1].clientWidth * 4.2,
+        x: winSize.width - (this.items[1].clientWidth * 4.2),
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 1, {
         boxShadow: "20px 12px 20px rgba(0, 0, 0, 0.40)",
         delay: .5,
       });
-
       TweenMax.to(this.items[0].querySelector(".mask_img"), 1, {
         boxShadow: "20px 12px 30px rgba(0, 0, 0, 0)",
         width: winSize.width / 2
