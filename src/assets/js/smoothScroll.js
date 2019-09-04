@@ -76,6 +76,7 @@
   class SmoothScroll {
     constructor() {
       this.DOM = { main: document.querySelector('main') };
+      this.DOM.navBar = body.querySelector("#backdrop").offsetHeight;
       this.DOM.scrollable = this.DOM.main.querySelector('div[data-scroll]');
       this.items = [];
       [...this.DOM.main.querySelectorAll('.item_scroll')].forEach(item => this.items.push(new Item(item)));
@@ -103,7 +104,7 @@
       this.DOM.scrollable.style.transform = `translate3d(0,${-1 * this.renderedStyles.translationY.previous}px,0)`;
     }
     setSize() {
-      body.style.height = `${this.DOM.scrollable.scrollHeight}px`;
+      body.style.height = `${this.DOM.scrollable.scrollHeight + this.DOM.navBar}px`;
     }
     style() {
       this.DOM.main.style.position = 'fixed';
