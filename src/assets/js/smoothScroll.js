@@ -69,7 +69,7 @@
       this.layout();
     }
     layout() {
-      this.DOM.image.style.transform = `translate3d(0,${this.renderedStyles.innerTranslationY.previous}px,0)`;
+      this.DOM.image.style.transform = `scale(1.1) translate3d(0,${this.renderedStyles.innerTranslationY.previous}px,0)`;
     }
   }
 
@@ -101,7 +101,7 @@
       this.layout();
     }
     layout() {
-      this.DOM.scrollable.style.transform = `translate3d(0,${-1 * this.renderedStyles.translationY.previous}px,0)`;
+      this.DOM.scrollable.style.transform = `translate3d(0,${-1 * this.renderedStyles.translationY.previous}px,0) `;
     }
     setSize() {
       body.style.height = `${this.DOM.scrollable.scrollHeight + this.DOM.navBar}px`;
