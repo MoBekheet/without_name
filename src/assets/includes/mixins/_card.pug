@@ -48,3 +48,28 @@ mixin cardNominees(src, alt, srcAvatar, altAvatar, name,projects,form)
     .caption_down
       h4.title.my-1 وردبربس لشركة طبيبة
       p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
+
+
+mixin proCardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
+  .card.item_scroll.mb-5
+    .mask_img.item__img-wrap.link
+      img(class="item__img" src=src, alt=alt)
+      .caption.d-flex.align-items-center.px-3
+        .avatar
+          img(src=srcAvatar, alt=altAvatar)
+        .box.mr-2
+          h4(class="m-0 name")=name
+          p(class="m-0 projects")
+            span=projects
+            span.mx-1 مشروع   
+          h5(class="m-0 form")=form
+      .overlay.p-3
+        .btns_top.d-flex.justify-content-end
+          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-collections.fi
+          a(href="#" class="d-inline-block px-3 py-1 mx-1")
+            i.flaticon-heart.fi.mr-2
+            span 35
+
+    .caption_down
+      h4.title.my-1 وردبربس لشركة طبيبة
+      p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
