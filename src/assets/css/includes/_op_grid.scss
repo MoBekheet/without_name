@@ -7,7 +7,8 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  cursor: none;
+  cursor: none !important;
+  outline: none;
 }
 
 @import "functions";

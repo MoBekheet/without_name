@@ -15,12 +15,58 @@ mixin cardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
         .btns_top.d-flex.justify-content-end
           a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-collections.fi
           a(href="#" class="d-inline-block px-3 py-1 mx-1")
+            i.flaticon-like.fi.mr-2
+            span 35
+
+    .caption_down
+      h4.title.my-2 وردبربس لشركة طبيبة
+      h.date 3 فبراير 2018
+      p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس 
+
+
+
+
+
+
+mixin swiperWinners(src, alt, srcAvatar, altAvatar, name,projects,form,date)
+  .card.item.item_scroll.swiper-slide
+    .mask_img.item__img-wrap.link
+      img(class="item__img" src=src, alt=alt)
+      .caption.d-flex.align-items-center.px-3
+        .avatar
+          img(src=srcAvatar, alt=altAvatar)
+        .box.mr-2
+          h4(class="m-0 name")=name
+          p(class="m-0 projects")
+            span=projects
+            span.mx-1 مشروع   
+          h5(class="m-0 form")=form
+      .overlay.p-3
+        .btns_top.d-flex.justify-content-end
+          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-collections.fi
+          a(href="#" class="d-inline-block px-3 py-1 mx-1")
             i.flaticon-heart.fi.mr-2
             span 35
 
     .caption_down
-      h4.title.my-1 وردبربس لشركة طبيبة
-      p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
+      .row
+        .col-6
+          h4.title.my-2 وردبربس لشركة طبيبة
+          h.date=date
+        .col-6
+          ul.p-0.d-flex.justify-content-end
+            li: i(data-hover="التصميم",).dislink.flaticon-honor-band-mention.fi.mx-2
+            li: i(data-hover="التصميم",).dislink.flaticon-medal.fi.mx-2
+            li: i(data-hover="التصميم",).dislink.flaticon-coding1.fi.mx-2
+            li: i(data-hover="التصميم",).dislink.flaticon-coding.fi.mx-2
+      //- p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
+
+
+
+
+
+
+
 
 
 
@@ -42,9 +88,9 @@ mixin cardNominees(src, alt, srcAvatar, altAvatar, name,projects,form)
         .btns_top.d-flex.justify-content-end
           a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-collections.fi
           a(href="#" class="d-inline-block px-3 py-1 mx-1")
-            i.flaticon-heart.fi.mr-2
+            i.flaticon-like.fi.mr-2
             span 35
 
     .caption_down
-      h4.title.my-1 وردبربس لشركة طبيبة
+      h4.title.my-3 وردبربس لشركة طبيبة
       p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات

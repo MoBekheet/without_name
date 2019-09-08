@@ -17,8 +17,20 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     isMobile = true;
   }
 
-  var body = document.body;
-  var winSize,
+  var MathUtils = {
+    map: function map(x, a, b, c, d) {
+      _newArrowCheck(this, _this);
+
+      return (x - a) * (d - c) / (b - a) + c;
+    }.bind(void 0),
+    lerp: function lerp(a, b, n) {
+      _newArrowCheck(this, _this);
+
+      return (1 - n) * a + n * b;
+    }.bind(void 0)
+  };
+  var body = document.body,
+      winSize,
       isVisible = false;
 
   var calcWinSize = function calcWinSize() {
@@ -31,44 +43,38 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   calcWinSize();
-  body.querySelector("main").style.paddingTop = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
-  body.querySelector("aside").style.top = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
-  body.querySelector("#backdrop #hamburger > button").addEventListener("click", function (_) {
+  var docScroll;
+
+  var getPageYScroll = function getPageYScroll() {
     _newArrowCheck(this, _this);
 
-    body.querySelector("aside").classList.toggle('active');
-  }.bind(void 0));
+    return docScroll = window.pageYOffset || document.documentElement.scrollTop;
+  }.bind(void 0);
+
+  window.addEventListener('scroll', getPageYScroll);
   window.addEventListener('resize', calcWinSize);
-  var mousePos = {
-    x: winSize.width / 2,
-    y: winSize.height / 2
-  };
+  body.querySelector("main").style.paddingTop = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
+  body.querySelector("aside").style.top = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
 
   var getMousePos = function getMousePos(e) {
     _newArrowCheck(this, _this);
 
-    var posX = 0;
-    var posY = 0;
-    if (!e) e = window.event;
-
-    if (e.pageX || e.pageY) {
-      posX = e.pageX;
-      posY = e.pageY;
-    } else if (e.clientX || e.clientY) {
-      posX = e.clientX + body.scrollLeft + document.documentElement.scrollLeft;
-      posY = e.clientY + body.scrollTop + document.documentElement.scrollTop;
-    }
-
+    var posx = e.clientX;
+    var posy = e.clientY;
     return {
-      x: posX,
-      y: posY
+      x: posx,
+      y: posy
     };
   }.bind(void 0);
 
-  window.addEventListener('mousemove', function (e) {
+  var mousepos = {
+    x: winSize.width / 2,
+    y: winSize.height / 2
+  };
+  window.addEventListener('mousemove', function (ev) {
     _newArrowCheck(this, _this);
 
-    return mousePos = getMousePos(e);
+    return mousepos = getMousePos(ev);
   }.bind(void 0));
 
   var Cursor = function () {
@@ -79,7 +85,9 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         cursor: body.querySelector("#cursor"),
         circle: cursor.querySelector("#circle"),
         title: cursor.querySelector("#title"),
-        dot: cursor.querySelector("#dot")
+        dot: cursor.querySelector("#dot"),
+        move: body.querySelectorAll('.move'),
+        link: body.querySelectorAll('.link')
       };
       this.boundsCircle = this.DOM.circle.getBoundingClientRect();
       this.boundsDot = this.DOM.dot.getBoundingClientRect();
@@ -87,12 +95,12 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         txc: {
           previous: 0,
           current: 0,
-          amt: 0.2
+          amt: 0.4
         },
         tyc: {
           previous: 0,
           current: 0,
-          amt: 0.2
+          amt: 0.4
         },
         txd: {
           previous: 0,
@@ -118,14 +126,14 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           value: "#2a2a2a"
         }
       };
-      this.initEvents();
       requestAnimationFrame(function () {
         _newArrowCheck(this, _this2);
 
         return this.render();
       }.bind(this));
+      this.initEvents();
 
-      _toConsumableArray(body.querySelectorAll('.link')).forEach(function (link) {
+      _toConsumableArray(this.DOM.link).forEach(function (link) {
         var _this3 = this;
 
         _newArrowCheck(this, _this2);
@@ -133,8 +141,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         link.addEventListener('mouseenter', function (e) {
           _newArrowCheck(this, _this3);
 
-          var offset = Math.round(mousePos.x / body.clientWidth);
           this.DOM.title.querySelector("h4").innerHTML = e.target.getAttribute("data-hover");
+          this.DOM.title.querySelector("h4").style.color = '#222';
           this.enter();
         }.bind(this));
         link.addEventListener('mouseleave', function (_) {
@@ -164,44 +172,30 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
     var _proto = Cursor.prototype;
 
-    _proto.initEvents = function initEvents() {
+    _proto.render = function render() {
       var _this5 = this;
 
-      window.addEventListener('resize', function () {
-        _newArrowCheck(this, _this5);
-
-        return this.resize();
-      }.bind(this));
-    };
-
-    _proto.resize = function resize() {};
-
-    _proto.lerp = function lerp(a, b, n) {
-      return (1 - n) * a + n * b;
-    };
-
-    _proto.render = function render() {
-      var _this6 = this;
-
-      this.renderedStyles['txc'].current = mousePos.x - this.boundsCircle.width / 2;
-      this.renderedStyles['tyc'].current = mousePos.y - this.boundsCircle.height / 2;
-      this.renderedStyles['txd'].current = mousePos.x - this.boundsDot.width / 2;
-      this.renderedStyles['tyd'].current = mousePos.y - this.boundsDot.height / 2;
+      this.renderedStyles['txc'].current = mousepos.x - this.boundsCircle.width / 2;
+      this.renderedStyles['tyc'].current = mousepos.y - this.boundsCircle.height / 2;
+      this.renderedStyles['txd'].current = mousepos.x - this.boundsDot.width / 2;
+      this.renderedStyles['tyd'].current = mousepos.y - this.boundsDot.height / 2;
 
       for (var key in this.renderedStyles) {
-        this.renderedStyles[key].previous = this.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+        this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
       }
 
-      this.DOM.circle.style.transform = "translateX(".concat(this.renderedStyles['txc'].previous, "px) translateY(").concat(this.renderedStyles['tyc'].previous, "px) scale(").concat(this.renderedStyles['scale'].previous, ")");
-      this.DOM.dot.style.transform = "translateX(".concat(this.renderedStyles['txd'].previous, "px) translateY(").concat(this.renderedStyles['tyd'].previous, "px) scale(").concat(this.renderedStyles['scaleDot'].previous, ")");
+      this.DOM.circle.style.transform = "translate(".concat(this.renderedStyles['txc'].previous, "px, ").concat(this.renderedStyles['tyc'].previous, "px) scale(").concat(this.renderedStyles['scale'].previous, ")");
+      this.DOM.dot.style.transform = "translate(".concat(this.renderedStyles['txd'].previous, "px, ").concat(this.renderedStyles['tyd'].previous, "px) scale(").concat(this.renderedStyles['scaleDot'].previous, ")");
       this.DOM.dot.style.backgroundColor = this.renderedStyles['color'].value;
-      this.DOM.title.style.transform = "translateX(".concat(this.renderedStyles['txc'].previous, "px) translateY(").concat(this.renderedStyles['tyc'].previous, "px)");
+      this.DOM.title.style.transform = "translate(".concat(this.renderedStyles['txc'].previous, "px, ").concat(this.renderedStyles['tyc'].previous, "px)");
       requestAnimationFrame(function () {
-        _newArrowCheck(this, _this6);
+        _newArrowCheck(this, _this5);
 
         return this.render();
       }.bind(this));
     };
+
+    _proto.initEvents = function initEvents() {};
 
     _proto.enter = function enter() {
       this.renderedStyles['scaleDot'].current = 4;
@@ -227,18 +221,296 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.renderedStyles['scale'].previous = 0.4;
     };
 
+    _proto.showArrows = function showArrows() {
+      var _this6 = this;
+
+      TweenMax.to(Object.values(this.DOM.arrows), 1, {
+        ease: Expo.easeOut,
+        startAt: {
+          x: function x(i) {
+            _newArrowCheck(this, _this6);
+
+            return i ? 10 : -10;
+          }.bind(this)
+        },
+        opacity: 1,
+        x: 0
+      });
+    };
+
+    _proto.hideArrows = function hideArrows() {
+      var _this7 = this;
+
+      TweenMax.to(Object.values(this.DOM.arrows), 1, {
+        x: function x(i) {
+          _newArrowCheck(this, _this7);
+
+          return i ? 10 : -10;
+        }.bind(this),
+        opacity: 0,
+        ease: Expo.easeOut
+      });
+    };
+
     return Cursor;
   }();
 
-  new Swiper('.swiper-container', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    freeMode: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
+  var Item = function () {
+    function Item(el) {
+      var _this8 = this;
+
+      this.DOM = {
+        el: el
+      };
+      this.DOM.image = this.DOM.el.querySelector('.item__img');
+      this.renderedStyles = {
+        innerTranslationY: {
+          previous: 0,
+          current: 0,
+          ease: 0.1,
+          maxValue: parseInt(40, 10),
+          setValue: function setValue() {
+            _newArrowCheck(this, _this8);
+
+            var maxValue = this.renderedStyles.innerTranslationY.maxValue;
+            var minValue = -1 * maxValue;
+            return Math.max(Math.min(MathUtils.map(this.props.top - docScroll, winSize.height, -1 * this.props.height, minValue, maxValue), maxValue), minValue);
+          }.bind(this)
+        }
+      };
+      this.update();
+      this.observer = new IntersectionObserver(function (entries) {
+        var _this9 = this;
+
+        _newArrowCheck(this, _this8);
+
+        entries.forEach(function (entry) {
+          _newArrowCheck(this, _this9);
+
+          return this.isVisible = entry.intersectionRatio > 0;
+        }.bind(this));
+      }.bind(this));
+      this.observer.observe(this.DOM.el);
+      this.initEvents();
     }
-  });
-  new Cursor();
+
+    var _proto2 = Item.prototype;
+
+    _proto2.update = function update() {
+      this.getSize();
+
+      for (var key in this.renderedStyles) {
+        this.renderedStyles[key].current = this.renderedStyles[key].previous = this.renderedStyles[key].setValue();
+      }
+
+      this.layout();
+    };
+
+    _proto2.getSize = function getSize() {
+      var rect = this.DOM.el.getBoundingClientRect();
+      this.props = {
+        height: rect.height,
+        top: docScroll + rect.top
+      };
+    };
+
+    _proto2.initEvents = function initEvents() {
+      var _this10 = this;
+
+      window.addEventListener('resize', function () {
+        _newArrowCheck(this, _this10);
+
+        return this.resize();
+      }.bind(this));
+    };
+
+    _proto2.resize = function resize() {
+      this.update();
+    };
+
+    _proto2.render = function render() {
+      for (var key in this.renderedStyles) {
+        this.renderedStyles[key].current = this.renderedStyles[key].setValue();
+        this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].ease);
+      }
+
+      this.layout();
+    };
+
+    _proto2.layout = function layout() {
+      this.DOM.image.style.transform = "scale(1.1) translate3d(0,".concat(this.renderedStyles.innerTranslationY.previous, "px,0)");
+    };
+
+    return Item;
+  }();
+
+  var SmoothScroll = function () {
+    function SmoothScroll() {
+      var _this11 = this;
+
+      this.DOM = {
+        main: document.querySelector('main')
+      };
+      this.DOM.navBar = body.querySelector("#backdrop").offsetHeight;
+      this.DOM.scrollable = this.DOM.main.querySelector('div[data-scroll]');
+      this.items = [];
+
+      _toConsumableArray(this.DOM.main.querySelectorAll('.item_scroll')).forEach(function (item) {
+        _newArrowCheck(this, _this11);
+
+        return this.items.push(new Item(item));
+      }.bind(this));
+
+      this.renderedStyles = {
+        translationY: {
+          previous: 0,
+          current: 0,
+          ease: 0.1,
+          setValue: function setValue() {
+            _newArrowCheck(this, _this11);
+
+            return docScroll;
+          }.bind(this)
+        }
+      };
+      this.setSize();
+      this.update();
+      this.hamburger();
+      this.initEvents();
+      requestAnimationFrame(function () {
+        _newArrowCheck(this, _this11);
+
+        return this.render();
+      }.bind(this));
+    }
+
+    var _proto3 = SmoothScroll.prototype;
+
+    _proto3.update = function update() {
+      for (var key in this.renderedStyles) {
+        this.renderedStyles[key].current = this.renderedStyles[key].previous = this.renderedStyles[key].setValue();
+      }
+
+      this.layout();
+    };
+
+    _proto3.layout = function layout() {
+      this.DOM.scrollable.style.transform = "translate3d(0,".concat(-1 * this.renderedStyles.translationY.previous, "px,0) ");
+    };
+
+    _proto3.setSize = function setSize() {
+      body.style.height = "".concat(this.DOM.scrollable.scrollHeight + this.DOM.navBar, "px");
+    };
+
+    _proto3.hamburger = function hamburger() {
+      var _this12 = this;
+
+      body.querySelector("#backdrop #hamburger > button").addEventListener("click", function (_) {
+        _newArrowCheck(this, _this12);
+
+        body.querySelector("aside").classList.toggle('active');
+      }.bind(this));
+      var tlm = new TimelineMax({});
+
+      _toConsumableArray(body.querySelectorAll("#backdrop #hamburger > button  rect")).forEach(function (i) {
+        _newArrowCheck(this, _this12);
+
+        tlm.staggerTo(i, 0.25, {
+          scaleX: 1.5,
+          repeat: 1,
+          yoyo: true
+        }, 0.125);
+      }.bind(this));
+
+      body.querySelector("#backdrop #hamburger > button").addEventListener("mouseenter", function (_) {
+        _newArrowCheck(this, _this12);
+      }.bind(this));
+    };
+
+    _proto3.style = function style() {
+      this.DOM.main.style.position = 'fixed';
+      this.DOM.main.style.width = this.DOM.main.style.height = '100%';
+      this.DOM.main.style.top = this.DOM.main.style.left = 0;
+      this.DOM.main.style.overflow = 'hidden';
+    };
+
+    _proto3.initEvents = function initEvents() {
+      var _this13 = this;
+
+      window.addEventListener('resize', function () {
+        _newArrowCheck(this, _this13);
+
+        return this.setSize();
+      }.bind(this));
+    };
+
+    _proto3.render = function render() {
+      var _this14 = this;
+
+      for (var key in this.renderedStyles) {
+        this.renderedStyles[key].current = this.renderedStyles[key].setValue();
+        this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].ease);
+      }
+
+      this.layout();
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (item.isVisible) {
+            item.render();
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      requestAnimationFrame(function () {
+        _newArrowCheck(this, _this14);
+
+        return this.render();
+      }.bind(this));
+    };
+
+    return SmoothScroll;
+  }();
+
+  var preloadImages = function preloadImages() {
+    var _this15 = this;
+
+    _newArrowCheck(this, _this);
+
+    return new Promise(function (resolve, reject) {
+      _newArrowCheck(this, _this15);
+
+      imagesLoaded(document.querySelectorAll('.item__img'), {
+        background: true
+      }, resolve);
+    }.bind(this));
+  }.bind(void 0);
+
+  preloadImages().then(function () {
+    _newArrowCheck(this, _this);
+
+    document.body.classList.remove('loading');
+    getPageYScroll();
+    new SmoothScroll();
+    new Cursor();
+  }.bind(void 0));
 }
 //# sourceMappingURL=main.js.map

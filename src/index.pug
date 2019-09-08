@@ -28,7 +28,7 @@ html(lang="en")
       #dot
       #circle
       #title
-        h4.m-0 
+        h4.m-0 testttttt
     main
       div(data-scroll)
         section#site_of_the_day.py-5
@@ -39,50 +39,135 @@ html(lang="en")
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/1.jpg", alt="")
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt="")
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/audio-mixer-3.jpg", alt="")
-          //- #caption
-          //-   .box_noteSite
-          //-     ul.d-flex
-          //-       li(class="dislink design", data-hover="التصميم")
-          //-       li(class="dislink usability", data-hover="سهولة الاستخدام")
-          //-       li(class="dislink creativity", data-hover="الإبداع")
-          //-       li(class="dislink content", data-hover="المحتوى")
-          //-       li(class="dislink responsive", data-hover="متجاوب")
-          //- #info
-          //- h4
+          #caption
+            .box_noteSite
+              ul.d-flex
+                li(class="dislink design", data-hover="التصميم")
+                li(class="dislink usability", data-hover="سهولة الاستخدام")
+                li(class="dislink creativity", data-hover="الإبداع")
+                li(class="dislink content", data-hover="المحتوى")
+                li(class="dislink responsive", data-hover="متجاوب")
+          #info
+          h4
           button(type="button" id="close" class="link" data-hover="اضغط هنا") Close 
-
-        .swiper-container
-          .swiper-wrapper.d-flex
-            .item.item_scroll.link.swiper-slide: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/audio-mixer-1.jpg", alt="")
-            .item.item_scroll.link.swiper-slide: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/1.jpg", alt="")
-            .item.item_scroll.link.swiper-slide: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt="")
-            .item.item_scroll.link.swiper-slide: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/audio-mixer-3.jpg", alt="")
-          .swiper-pagination
-  
-
-        section#gird
+        
+        section#Winners.my-5.py-5
+          .container
+            .head_title.mb-5.mt-0
+              h2 مواقع اليوم 
+                span الفائزين السابقين
+          div(class="swiper__slider swiper")
+            div(class="swiper__inner")
+            div(class="proxy link move")
+              div(class="swiper__content d-flex")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+            
+        section#nominees.my-5.py-5
+          .container
+            .head_title.mb-5.mt-0
+              h2 مواقع اليوم 
+                span الفائزين السابقين
+          div(class="swiper__slider swiper")
+            div(class="swiper__inner")
+            div(class="proxy link move")
+              div(class="swiper__content d-flex")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+            
+        section#featured_Members.my-5.py-5
+          .container
+            .head_title.mb-5.mt-0
+              h2 مواقع اليوم 
+                span الفائزين السابقين
+          div(class="swiper__slider swiper")
+            div(class="swiper__inner")
+            div(class="proxy link move")
+              div(class="swiper__content d-flex")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                div(class="swiper-slide slide")
+                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+            
+        section#gird.my-5.py-5
           .container
             div(class="card-columns") 
-              +cardWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/audio-mixer-2.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/7.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
-              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر")
+              +cardWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/audio-mixer-2.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/7.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
               
+      
+        footer
+          .container
+            .hr.mb-3
+            h1.py-2 جوائز التصميم والإبداع والابتكار على الإنترنت
+            ul
+              li: a.link(href="#") الصفحة الرئيسية
+              li: a.link(href="#") المرشحين
+              li: a.link(href="#") المجمعات
+            a.link: h1.logo LOGO
+            .hr.mb-3
+            .copyrights.py-4.d-flex.justify-content-center.align-items-center
+              .icons
+                a.p-3.link(href="#"): i.flaticon-facebook.fi
+                a.p-3.link(href="#"): i.flaticon-twitter.fi
+                a.p-3.link(href="#"): i.flaticon-linkedin.fi
+                a.p-3.link(href="#"): i.flaticon-instagram.fi
+                p Logo | جميع الحقوق محفوظة 2019
     aside
-      ul
-        li test
-        li test
-        li test
-        li test
-        li test
-
+      ul.p-0
+        li.py-3: a(href="#" class="link d-block pb-1") الصفحة الرئيسية
+        li.py-3: a(href="#" class="link d-block py-1") الفائزين
+        li.py-3: a(href="#" class="link d-block py-1") المرشحين
+        li.py-3: a(href="#" class="link d-block py-1") مجموعات
+        li.py-3: a(href="#" class="link d-block py-1") معلومات عنا
+        
     //- SCRIPTS
     include assets/includes/_scripts
-      
-      
