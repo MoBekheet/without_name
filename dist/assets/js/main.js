@@ -492,18 +492,6 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
         body.querySelector("aside").classList.toggle('active');
       }.bind(this));
-      var tlm = new TimelineMax({});
-
-      _toConsumableArray(body.querySelectorAll("#backdrop #hamburger > button  rect")).forEach(function (i) {
-        _newArrowCheck(this, _this14);
-
-        tlm.staggerTo(i, 0.25, {
-          scaleX: 1.5,
-          repeat: 1,
-          yoyo: true
-        }, 0.125);
-      }.bind(this));
-
       body.querySelector("#backdrop #hamburger > button").addEventListener("mouseenter", function (_) {
         _newArrowCheck(this, _this14);
       }.bind(this));

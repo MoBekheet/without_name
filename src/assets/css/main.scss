@@ -3,7 +3,7 @@
 @import "includes/op_grid";
 // @import url("https://fonts.googleapis.com/css?family=Raleway:400");
 // @import url('https://fonts.googleapis.com/css?family=Tajawal:400,700&display=swap&subset=arabic');
-@import url('https://fonts.googleapis.com/css?family=Cairo:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Cairo:600,700');
 @import "font/flaticon";
 
 html,
@@ -17,6 +17,11 @@ body {
 
 a {
   text-decoration: none;
+  color: $gray-800;
+  font-weight: 600;
+  &:hover{
+    color: #00c3da
+  }
 }
 
 main {
@@ -143,7 +148,7 @@ aside {
   height: 100%;
   // background-color: rgba(255, 255, 255, 1);
   color: white;
-
+  z-index: 888;
   @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);

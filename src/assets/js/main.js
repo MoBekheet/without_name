@@ -287,12 +287,12 @@
       body.querySelector("#backdrop #hamburger > button").addEventListener("click", _ => {
         body.querySelector("aside").classList.toggle('active');
       });
-      const tlm = new TimelineMax({});
-      [...body.querySelectorAll("#backdrop #hamburger > button  rect")].forEach(i => {
-        tlm.staggerTo(i, 0.25, { scaleX: 1.5, repeat: 1, yoyo: true }, 0.125)
-      })
       body.querySelector("#backdrop #hamburger > button").addEventListener("mouseenter", _ => {
-
+        // [...body.querySelectorAll("#backdrop #hamburger button  rect")].forEach((i,x) => {
+        //     TweenMax.to(i, 1, {
+        //       scaleX: .5,
+        //     })
+        // })
       });
     }
     style() {
@@ -324,6 +324,7 @@
       imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);
     });
   };
+
   preloadImages().then(() => {
     document.body.classList.remove('loading');
     getPageYScroll();
