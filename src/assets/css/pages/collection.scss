@@ -2,16 +2,33 @@ body{
   background-color: #eee;
 }
 .groups:hover .dropdown-menu{
-  display: block;
+  display: flex;
 }
 .sections:hover .dropdown-menu{
-  display: block;
+  display: flex;
 }
 .dropdown-menu{
-  background-color: #333;
-  z-index: 99999999;
-  position: fixed;
+  background-color: #fff;
+  z-index: 889;
+  position: absolute;
+  left: 0;
+  right: 0;
   display: none;
+  a{
+    border: 2px solid #333;
+    padding: 0px 15px !important;
+    border-radius: 20px  ;
+    -webkit-border-radius: 20px  ;
+    -moz-border-radius: 20px  ;
+    -ms-border-radius: 20px  ;
+    -o-border-radius: 20px  ;
+    &:hover{
+      border: 2px solid #00c3da;
+      color: #00c3da;
+      
+    }
+}
+  
 }
 .vote{
   position: absolute;
@@ -43,6 +60,47 @@ body{
         background-color: tomato;
         color: #fff;
       }
+    }
+  }
+}
+
+
+
+/* small screen */
+
+@media (min-width:768px) and (max-width:991px) {
+  
+  .filters{
+    li{
+      a{
+        font-size: 7px !important;
+      }
+    }
+  } 
+  
+  footer{
+    h1{
+      font-size: 27px;
+    }
+  }
+
+}
+
+/* smart phone and tablets */
+
+@media (max-width:767px) {
+  
+  .filters{
+    li{
+      a{
+        font-size: 10px !important;
+      }
+    }
+  } 
+  
+  footer{
+    h1{
+      font-size: 20px;
     }
   }
 }
