@@ -1,0 +1,97 @@
+
+include assets/includes/_variables
+include assets/includes/_mixins
+include assets/includes/mixins/_card
+doctype html
+html(lang="en")
+  //- HEAD
+  head
+    include assets/includes/_head
+    link(rel="stylesheet", href="assets/css/nominees.min.css")
+  body
+    include assets/includes/mixins/_navbar&aside
+    include assets/includes/mixins/_cursor
+    main
+      div(data-scroll)
+        section.filters.my-4.py-2
+          ul.d-flex
+            li.px-3: a.link(href="#") مصنف بواسطة
+            li.px-3.candid
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") مرشح
+                  li: a(href="#") مرشح
+                  li: a(href="#") مرشح
+              a.link(href="#") المرشحين
+            li.px-3.sections
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") قسم
+                  li: a(href="#") قسم
+                  
+                  li: a(href="#") قسم
+              a.link(href="#") الأقسام
+              
+            li.px-3.words
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") كلمة1
+                  li: a(href="#") كلمة 2
+                  li: a(href="#") كلمة 3
+              a.link(href="#") الكلمات 
+            li.px-3.techniq
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") تقنية
+                  li: a(href="#") تقنية
+                  li: a(href="#") تقنية
+              a.link(href="#") التقنيات 
+            li.px-3.colors
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") لون
+                  li: a(href="#") لون
+                  li: a(href="#") لون
+              a.link(href="#") الألوان 
+            li.px-3.countrys
+              .dropdown-menu.mt-3.p-3
+                ul
+                  li: a(href="#") بلد
+                  li: a(href="#") بلد
+                  li: a(href="#") بلد
+              a.link(href="#") بلدان 
+            li.px-3: a.link(href="#") إعادة تعيين المرشحات
+
+        section#gird
+          .container
+            div(class="card-columns") 
+              +cardNominees("assets/images/10.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/12.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/13.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/7.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardNominees("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              
+        section.pagination.py-5
+          .container
+            .row
+              .col-md-12
+                ul.d-flex
+                  li.px-1: a.p-2.link(href="#") 1
+                  li.px-1: a.p-2.link(href="#") 2
+                  li.px-1: a.p-2.link(href="#") 3
+                  li.px-1: a.p-2.link(href="#") 4
+          
+          
+        include assets/includes/mixins/_footer
+
+
+
+    //- SCRIPTS
+    include assets/includes/_scripts
+      
+      
