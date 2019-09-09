@@ -12,24 +12,19 @@
   };
 
   let body = document.body,
-    winSize,
-    isVisible = false;
+    winSize;
   const calcWinSize = () => winSize = { width: window.innerWidth, height: window.innerHeight };
   calcWinSize();
-
 
   let docScroll;
   const getPageYScroll = () => docScroll = window.pageYOffset || document.documentElement.scrollTop;
   window.addEventListener('scroll', getPageYScroll);
 
-
   window.addEventListener('resize', calcWinSize);
   body.querySelector("main").style.paddingTop = `${body.querySelector("#backdrop").offsetHeight}px`;
   body.querySelector("aside").style.top = `${body.querySelector("#backdrop").offsetHeight}px`;
 
-
-  // Gets the mouse position
-  const getMousePos = (e) => {
+  const getMousePos = e => {
     let posx = e.clientX;
     let posy = e.clientY;
     return { x: posx, y: posy }
@@ -37,22 +32,22 @@
 
   let mousepos = { x: winSize.width / 2, y: winSize.height / 2 };
   window.addEventListener('mousemove', ev => mousepos = getMousePos(ev));
-  // Custom cursor
+
   class Cursor {
     constructor() {
       this.DOM = {
         cursor: body.querySelector("#cursor"),
         circle: cursor.querySelector("#circle"),
         title: cursor.querySelector("#title"),
-        dot: cursor.querySelector("#dot"),
+        dot: body.querySelector("#dot"),
         move: body.querySelectorAll('.move'),
-        link: body.querySelectorAll('.link')
+        link: body.querySelectorAll('.link'),
+        dislink: body.querySelectorAll('.dislink')
       };
-      
-    //   this.DOM.arrows = {
-    //     right: this.DOM.el.querySelector('.side--right'),
-    //     left: this.DOM.el.querySelector('.side--left')
-    // };
+      this.DOM.arrows = {
+        right: this.DOM.circle.querySelector('.side--right'),
+        left: this.DOM.circle.querySelector('.side--left')
+      };
       this.boundsCircle = this.DOM.circle.getBoundingClientRect();
       this.boundsDot = this.DOM.dot.getBoundingClientRect();
 
@@ -61,38 +56,33 @@
         tyc: { previous: 0, current: 0, amt: 0.4 },
         txd: { previous: 0, current: 0, amt: 1 },
         tyd: { previous: 0, current: 0, amt: 1 },
+        txt: { previous: 0, current: 0, amt: 0.3 },
+        tyt: { previous: 0, current: 0, amt: 0.3 },
         scale: { previous: 1, current: 1, amt: 0.2 },
         scaleDot: { previous: 1, current: 1, amt: 0.2 },
         color: { value: "#2a2a2a" }
       };
+      this.posTitle = {
+        top: 0,
+        left: 20,
+        right: 16
+      };
       requestAnimationFrame(() => this.render());
       this.initEvents();
 
-      [...this.DOM.link].forEach((link) => {
-        link.addEventListener('mouseenter', e => {
-
-          // let offset = Math.round(mousePos.x / body.clientWidth);
-          this.DOM.title.querySelector("h4").innerHTML = e.target.getAttribute("data-hover");
-          this.DOM.title.querySelector("h4").style.color = '#222';
-          this.enter();
+      [...this.DOM.move].forEach((el) => {
+        el.addEventListener('mouseenter', _ => {
+          this.showArrows();
+          this.posTitle['right'] += 7;
+          this.posTitle['left'] += 7;
         });
-        link.addEventListener('mouseleave', _ => this.leave());
-        link.addEventListener('click', _ => this.click());
-
-      });
-      // [...this.DOM.move].forEach((el) => {
-      //   el.addEventListener('mouseover', e => {
-      //     this.DOM.circle.classList.toggle("active")
-      //   });
-      //   link.addEventListener('mouseleave', _ => this.leave());
-      // });
-      [...body.querySelectorAll('.dislink')].forEach((link) => {
-        link.addEventListener('mouseenter', e => {
-          this.DOM.title.querySelector("h4").innerHTML = e.target.getAttribute("data-hover");
+        el.addEventListener('mouseleave', _ => {
+          this.hideArrows();
+          this.posTitle['right'] -= 7;
+          this.posTitle['left'] -= 7;
         });
       });
     }
-
     render() {
 
       this.renderedStyles['txc'].current = mousepos.x - this.boundsCircle.width / 2;
@@ -101,6 +91,9 @@
       this.renderedStyles['txd'].current = mousepos.x - this.boundsDot.width / 2;
       this.renderedStyles['tyd'].current = mousepos.y - this.boundsDot.height / 2;
 
+      this.renderedStyles['txt'].current = mousepos.x - this.boundsDot.width / 2;
+      this.renderedStyles['tyt'].current = mousepos.y - this.boundsDot.height / 2;
+
       for (const key in this.renderedStyles) {
         this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
       }
@@ -108,17 +101,59 @@
       this.DOM.circle.style.transform = `translate(${(this.renderedStyles['txc'].previous)}px, ${this.renderedStyles['tyc'].previous}px) scale(${this.renderedStyles['scale'].previous})`;
       this.DOM.dot.style.transform = `translate(${(this.renderedStyles['txd'].previous)}px, ${this.renderedStyles['tyd'].previous}px) scale(${this.renderedStyles['scaleDot'].previous})`;
       this.DOM.dot.style.backgroundColor = this.renderedStyles['color'].value;
-      this.DOM.title.style.transform = `translate(${(this.renderedStyles['txc'].previous)}px, ${this.renderedStyles['tyc'].previous}px)`;
+      this.DOM.title.style.transform = `translate(${(this.renderedStyles['txt'].previous)}px, ${this.renderedStyles['tyt'].previous - 10}px)`;
 
       requestAnimationFrame(() => this.render());
     }
     initEvents() {
-
+      window.addEventListener("mousemove", _ => {
+        let offset = Math.round(mousepos.x / body.clientWidth);
+        if (offset == 1) {
+          TweenMax.to(this.DOM.title, .8, {
+            ease: Back.easeOut,
+            left: "auto",
+            right: `${this.posTitle.right}px`
+          });
+        } else {
+          TweenMax.to(this.DOM.title, .8, {
+            ease: Back.easeOut,
+            left: `${this.posTitle.left}px`,
+            right: "auto"
+          });
+        }
+      });
+      [...this.DOM.link].forEach((link) => {
+        link.addEventListener('mouseenter', e => {
+          let target = e.target.getAttribute("data-hover") /*|| "اضغط هنا"*/;
+          this.DOM.title.innerHTML = target;
+          this.enter();
+        });
+        link.addEventListener('mouseleave', _ => this.leave());
+        link.addEventListener('click', _ => this.click());
+      });
+      [...this.DOM.dislink].forEach((i) => {
+        i.addEventListener('mouseenter', e => {
+          this.DOM.title.innerHTML = e.target.getAttribute("data-hover");
+          TweenMax.to(this.DOM.title, .2, {
+            opacity: 1,
+            ease: Back.easeOut
+          });
+        });
+        i.addEventListener('mouseleave', e => {
+          TweenMax.to(this.DOM.title, .4, {
+            opacity: 0,
+            ease: Back.easeOut
+          });
+        })
+      });
     }
     enter() {
       this.renderedStyles['scaleDot'].current = 4;
       this.renderedStyles['scale'].current = 1.9;
       this.renderedStyles['color'].value = "#fff";
+      this.posTitle['right'] += 10;
+      this.posTitle['left'] += 10;
+      this.DOM.dot.style.mixBlendMode= "difference";
       TweenMax.to(this.DOM.title, .2, {
         opacity: 1,
         ease: Back.easeOut
@@ -128,7 +163,10 @@
       this.renderedStyles['color'].value = "#2a2a2a";
       this.renderedStyles['scaleDot'].current = 1;
       this.renderedStyles['scale'].current = 1;
-      TweenMax.to(this.DOM.title, .1, {
+      this.posTitle['right'] -= 10;
+      this.DOM.dot.style.mixBlendMode= "normal";
+      this.posTitle['left'] -= 10;
+      TweenMax.to(this.DOM.title, .4, {
         opacity: 0,
         ease: Back.easeOut
       });
@@ -139,7 +177,7 @@
     showArrows() {
       TweenMax.to(Object.values(this.DOM.arrows), 1, {
         ease: Expo.easeOut,
-        startAt: { x: i => i ? 10 : -10 },
+        startAt: { x: i => i ? -10 : 10 },
         opacity: 1,
         x: 0
       });
@@ -152,7 +190,6 @@
       });
     }
   }
-
 
   class Item {
     constructor(el) {
@@ -246,17 +283,16 @@
     setSize() {
       body.style.height = `${this.DOM.scrollable.scrollHeight + this.DOM.navBar}px`;
     }
-    hamburger(){
+    hamburger() {
       body.querySelector("#backdrop #hamburger > button").addEventListener("click", _ => {
         body.querySelector("aside").classList.toggle('active');
       });
       const tlm = new TimelineMax({});
       [...body.querySelectorAll("#backdrop #hamburger > button  rect")].forEach(i => {
-       tlm.staggerTo(i, 0.25, {scaleX: 1.5, repeat: 1, yoyo:true}, 0.125)
-        
+        tlm.staggerTo(i, 0.25, { scaleX: 1.5, repeat: 1, yoyo: true }, 0.125)
       })
       body.querySelector("#backdrop #hamburger > button").addEventListener("mouseenter", _ => {
-      
+
       });
     }
     style() {

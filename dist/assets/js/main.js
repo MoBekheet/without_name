@@ -30,8 +30,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     }.bind(void 0)
   };
   var body = document.body,
-      winSize,
-      isVisible = false;
+      winSize;
 
   var calcWinSize = function calcWinSize() {
     _newArrowCheck(this, _this);
@@ -85,9 +84,14 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         cursor: body.querySelector("#cursor"),
         circle: cursor.querySelector("#circle"),
         title: cursor.querySelector("#title"),
-        dot: cursor.querySelector("#dot"),
+        dot: body.querySelector("#dot"),
         move: body.querySelectorAll('.move'),
-        link: body.querySelectorAll('.link')
+        link: body.querySelectorAll('.link'),
+        dislink: body.querySelectorAll('.dislink')
+      };
+      this.DOM.arrows = {
+        right: this.DOM.circle.querySelector('.side--right'),
+        left: this.DOM.circle.querySelector('.side--left')
       };
       this.boundsCircle = this.DOM.circle.getBoundingClientRect();
       this.boundsDot = this.DOM.dot.getBoundingClientRect();
@@ -112,6 +116,16 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           current: 0,
           amt: 1
         },
+        txt: {
+          previous: 0,
+          current: 0,
+          amt: 0.3
+        },
+        tyt: {
+          previous: 0,
+          current: 0,
+          amt: 0.3
+        },
         scale: {
           previous: 1,
           current: 1,
@@ -126,6 +140,11 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           value: "#2a2a2a"
         }
       };
+      this.posTitle = {
+        top: 0,
+        left: 20,
+        right: 16
+      };
       requestAnimationFrame(function () {
         _newArrowCheck(this, _this2);
 
@@ -133,39 +152,24 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       }.bind(this));
       this.initEvents();
 
-      _toConsumableArray(this.DOM.link).forEach(function (link) {
+      _toConsumableArray(this.DOM.move).forEach(function (el) {
         var _this3 = this;
 
         _newArrowCheck(this, _this2);
 
-        link.addEventListener('mouseenter', function (e) {
+        el.addEventListener('mouseenter', function (_) {
           _newArrowCheck(this, _this3);
 
-          this.DOM.title.querySelector("h4").innerHTML = e.target.getAttribute("data-hover");
-          this.DOM.title.querySelector("h4").style.color = '#222';
-          this.enter();
+          this.showArrows();
+          this.posTitle['right'] += 7;
+          this.posTitle['left'] += 7;
         }.bind(this));
-        link.addEventListener('mouseleave', function (_) {
+        el.addEventListener('mouseleave', function (_) {
           _newArrowCheck(this, _this3);
 
-          return this.leave();
-        }.bind(this));
-        link.addEventListener('click', function (_) {
-          _newArrowCheck(this, _this3);
-
-          return this.click();
-        }.bind(this));
-      }.bind(this));
-
-      _toConsumableArray(body.querySelectorAll('.dislink')).forEach(function (link) {
-        var _this4 = this;
-
-        _newArrowCheck(this, _this2);
-
-        link.addEventListener('mouseenter', function (e) {
-          _newArrowCheck(this, _this4);
-
-          this.DOM.title.querySelector("h4").innerHTML = e.target.getAttribute("data-hover");
+          this.hideArrows();
+          this.posTitle['right'] -= 7;
+          this.posTitle['left'] -= 7;
         }.bind(this));
       }.bind(this));
     }
@@ -173,12 +177,14 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     var _proto = Cursor.prototype;
 
     _proto.render = function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.renderedStyles['txc'].current = mousepos.x - this.boundsCircle.width / 2;
       this.renderedStyles['tyc'].current = mousepos.y - this.boundsCircle.height / 2;
       this.renderedStyles['txd'].current = mousepos.x - this.boundsDot.width / 2;
       this.renderedStyles['tyd'].current = mousepos.y - this.boundsDot.height / 2;
+      this.renderedStyles['txt'].current = mousepos.x - this.boundsDot.width / 2;
+      this.renderedStyles['tyt'].current = mousepos.y - this.boundsDot.height / 2;
 
       for (var key in this.renderedStyles) {
         this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
@@ -187,20 +193,93 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.DOM.circle.style.transform = "translate(".concat(this.renderedStyles['txc'].previous, "px, ").concat(this.renderedStyles['tyc'].previous, "px) scale(").concat(this.renderedStyles['scale'].previous, ")");
       this.DOM.dot.style.transform = "translate(".concat(this.renderedStyles['txd'].previous, "px, ").concat(this.renderedStyles['tyd'].previous, "px) scale(").concat(this.renderedStyles['scaleDot'].previous, ")");
       this.DOM.dot.style.backgroundColor = this.renderedStyles['color'].value;
-      this.DOM.title.style.transform = "translate(".concat(this.renderedStyles['txc'].previous, "px, ").concat(this.renderedStyles['tyc'].previous, "px)");
+      this.DOM.title.style.transform = "translate(".concat(this.renderedStyles['txt'].previous, "px, ").concat(this.renderedStyles['tyt'].previous - 10, "px)");
       requestAnimationFrame(function () {
-        _newArrowCheck(this, _this5);
+        _newArrowCheck(this, _this4);
 
         return this.render();
       }.bind(this));
     };
 
-    _proto.initEvents = function initEvents() {};
+    _proto.initEvents = function initEvents() {
+      var _this5 = this;
+
+      window.addEventListener("mousemove", function (_) {
+        _newArrowCheck(this, _this5);
+
+        var offset = Math.round(mousepos.x / body.clientWidth);
+
+        if (offset == 1) {
+          TweenMax.to(this.DOM.title, .8, {
+            ease: Back.easeOut,
+            left: "auto",
+            right: "".concat(this.posTitle.right, "px")
+          });
+        } else {
+          TweenMax.to(this.DOM.title, .8, {
+            ease: Back.easeOut,
+            left: "".concat(this.posTitle.left, "px"),
+            right: "auto"
+          });
+        }
+      }.bind(this));
+
+      _toConsumableArray(this.DOM.link).forEach(function (link) {
+        var _this6 = this;
+
+        _newArrowCheck(this, _this5);
+
+        link.addEventListener('mouseenter', function (e) {
+          _newArrowCheck(this, _this6);
+
+          var target = e.target.getAttribute("data-hover");
+          this.DOM.title.innerHTML = target;
+          this.enter();
+        }.bind(this));
+        link.addEventListener('mouseleave', function (_) {
+          _newArrowCheck(this, _this6);
+
+          return this.leave();
+        }.bind(this));
+        link.addEventListener('click', function (_) {
+          _newArrowCheck(this, _this6);
+
+          return this.click();
+        }.bind(this));
+      }.bind(this));
+
+      _toConsumableArray(this.DOM.dislink).forEach(function (i) {
+        var _this7 = this;
+
+        _newArrowCheck(this, _this5);
+
+        i.addEventListener('mouseenter', function (e) {
+          _newArrowCheck(this, _this7);
+
+          this.DOM.title.innerHTML = e.target.getAttribute("data-hover");
+          TweenMax.to(this.DOM.title, .2, {
+            opacity: 1,
+            ease: Back.easeOut
+          });
+        }.bind(this));
+        i.addEventListener('mouseleave', function (e) {
+          _newArrowCheck(this, _this7);
+
+          TweenMax.to(this.DOM.title, .4, {
+            opacity: 0,
+            ease: Back.easeOut
+          });
+        }.bind(this));
+      }.bind(this));
+    };
 
     _proto.enter = function enter() {
       this.renderedStyles['scaleDot'].current = 4;
       this.renderedStyles['scale'].current = 1.9;
       this.renderedStyles['color'].value = "#fff";
+      this.posTitle['right'] += 10;
+      this.posTitle['left'] += 10;
+      this.DOM.dot.style.mixBlendMode = "difference";
       TweenMax.to(this.DOM.title, .2, {
         opacity: 1,
         ease: Back.easeOut
@@ -211,7 +290,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.renderedStyles['color'].value = "#2a2a2a";
       this.renderedStyles['scaleDot'].current = 1;
       this.renderedStyles['scale'].current = 1;
-      TweenMax.to(this.DOM.title, .1, {
+      this.posTitle['right'] -= 10;
+      this.DOM.dot.style.mixBlendMode = "normal";
+      this.posTitle['left'] -= 10;
+      TweenMax.to(this.DOM.title, .4, {
         opacity: 0,
         ease: Back.easeOut
       });
@@ -222,15 +304,15 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.showArrows = function showArrows() {
-      var _this6 = this;
+      var _this8 = this;
 
       TweenMax.to(Object.values(this.DOM.arrows), 1, {
         ease: Expo.easeOut,
         startAt: {
           x: function x(i) {
-            _newArrowCheck(this, _this6);
+            _newArrowCheck(this, _this8);
 
-            return i ? 10 : -10;
+            return i ? -10 : 10;
           }.bind(this)
         },
         opacity: 1,
@@ -239,11 +321,11 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.hideArrows = function hideArrows() {
-      var _this7 = this;
+      var _this9 = this;
 
       TweenMax.to(Object.values(this.DOM.arrows), 1, {
         x: function x(i) {
-          _newArrowCheck(this, _this7);
+          _newArrowCheck(this, _this9);
 
           return i ? 10 : -10;
         }.bind(this),
@@ -257,7 +339,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
   var Item = function () {
     function Item(el) {
-      var _this8 = this;
+      var _this10 = this;
 
       this.DOM = {
         el: el
@@ -270,7 +352,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           ease: 0.1,
           maxValue: parseInt(40, 10),
           setValue: function setValue() {
-            _newArrowCheck(this, _this8);
+            _newArrowCheck(this, _this10);
 
             var maxValue = this.renderedStyles.innerTranslationY.maxValue;
             var minValue = -1 * maxValue;
@@ -280,12 +362,12 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       };
       this.update();
       this.observer = new IntersectionObserver(function (entries) {
-        var _this9 = this;
+        var _this11 = this;
 
-        _newArrowCheck(this, _this8);
+        _newArrowCheck(this, _this10);
 
         entries.forEach(function (entry) {
-          _newArrowCheck(this, _this9);
+          _newArrowCheck(this, _this11);
 
           return this.isVisible = entry.intersectionRatio > 0;
         }.bind(this));
@@ -315,10 +397,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto2.initEvents = function initEvents() {
-      var _this10 = this;
+      var _this12 = this;
 
       window.addEventListener('resize', function () {
-        _newArrowCheck(this, _this10);
+        _newArrowCheck(this, _this12);
 
         return this.resize();
       }.bind(this));
@@ -346,7 +428,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
   var SmoothScroll = function () {
     function SmoothScroll() {
-      var _this11 = this;
+      var _this13 = this;
 
       this.DOM = {
         main: document.querySelector('main')
@@ -356,7 +438,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.items = [];
 
       _toConsumableArray(this.DOM.main.querySelectorAll('.item_scroll')).forEach(function (item) {
-        _newArrowCheck(this, _this11);
+        _newArrowCheck(this, _this13);
 
         return this.items.push(new Item(item));
       }.bind(this));
@@ -367,7 +449,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           current: 0,
           ease: 0.1,
           setValue: function setValue() {
-            _newArrowCheck(this, _this11);
+            _newArrowCheck(this, _this13);
 
             return docScroll;
           }.bind(this)
@@ -378,7 +460,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.hamburger();
       this.initEvents();
       requestAnimationFrame(function () {
-        _newArrowCheck(this, _this11);
+        _newArrowCheck(this, _this13);
 
         return this.render();
       }.bind(this));
@@ -403,17 +485,17 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto3.hamburger = function hamburger() {
-      var _this12 = this;
+      var _this14 = this;
 
       body.querySelector("#backdrop #hamburger > button").addEventListener("click", function (_) {
-        _newArrowCheck(this, _this12);
+        _newArrowCheck(this, _this14);
 
         body.querySelector("aside").classList.toggle('active');
       }.bind(this));
       var tlm = new TimelineMax({});
 
       _toConsumableArray(body.querySelectorAll("#backdrop #hamburger > button  rect")).forEach(function (i) {
-        _newArrowCheck(this, _this12);
+        _newArrowCheck(this, _this14);
 
         tlm.staggerTo(i, 0.25, {
           scaleX: 1.5,
@@ -423,7 +505,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       }.bind(this));
 
       body.querySelector("#backdrop #hamburger > button").addEventListener("mouseenter", function (_) {
-        _newArrowCheck(this, _this12);
+        _newArrowCheck(this, _this14);
       }.bind(this));
     };
 
@@ -435,17 +517,17 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto3.initEvents = function initEvents() {
-      var _this13 = this;
+      var _this15 = this;
 
       window.addEventListener('resize', function () {
-        _newArrowCheck(this, _this13);
+        _newArrowCheck(this, _this15);
 
         return this.setSize();
       }.bind(this));
     };
 
     _proto3.render = function render() {
-      var _this14 = this;
+      var _this16 = this;
 
       for (var key in this.renderedStyles) {
         this.renderedStyles[key].current = this.renderedStyles[key].setValue();
@@ -481,7 +563,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       }
 
       requestAnimationFrame(function () {
-        _newArrowCheck(this, _this14);
+        _newArrowCheck(this, _this16);
 
         return this.render();
       }.bind(this));
@@ -491,12 +573,12 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }();
 
   var preloadImages = function preloadImages() {
-    var _this15 = this;
+    var _this17 = this;
 
     _newArrowCheck(this, _this);
 
     return new Promise(function (resolve, reject) {
-      _newArrowCheck(this, _this15);
+      _newArrowCheck(this, _this17);
 
       imagesLoaded(document.querySelectorAll('.item__img'), {
         background: true

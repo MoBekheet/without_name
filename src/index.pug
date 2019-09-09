@@ -15,9 +15,9 @@ html(lang="en")
         .container
           #content.d-flex.align-items-center.justify-content-between
             #search
-              a(href="#" class="link")
+              a(href="#" class="link" data-hover="ابحث")
                 svg(viewBox="0 0 451 451"): path(d="M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z")
-            #logo: a(href="#" class="link") LOGO
+            #logo: a(href="#" class="link" data-hover="logo") LOGO
             #hamburger
               button(type="button" class="link")
                 svg(viewBox="0 0 207 137")
@@ -25,20 +25,21 @@ html(lang="en")
                   rect(id="Rectangle_2" data-name="Rectangle 2" width="206" height="19" rx="9.5" transform="translate(0 51.199)" fill="#2a2a2a")
                   rect(id="Rectangle_3" data-name="Rectangle 3" width="155" height="19" rx="9.5" transform="translate(51 102.399)" fill="#2a2a2a")
     #cursor.d-flex.align-items-center.justify-content-center
-      #dot
       #circle
-      #title
-        h4.m-0 testttttt
+        .side--right
+        .side--left
+      span#title
+    #dot
     main
       div(data-scroll)
         section#site_of_the_day.py-5
           a(href="#" class="overlay")
           .dots
           #items.m-0.d-flex.align-items-center.justify-content-start
-            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/audio-mixer-1.jpg", alt="")
-            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/1.jpg", alt="")
-            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt="")
-            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/audio-mixer-3.jpg", alt="")
+            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/1.jpg", alt=null)
+            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/2.jpg", alt=null)
+            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt=null)
+            .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/4.jpg", alt=null)
           #caption
             .box_noteSite
               ul.d-flex
@@ -61,21 +62,21 @@ html(lang="en")
             div(class="proxy link move")
               div(class="swiper__content d-flex")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/4.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/1.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/5.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/6.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/9.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/7.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/8.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/12.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
             
         section#nominees.my-5.py-5
           .container
@@ -87,21 +88,21 @@ html(lang="en")
             div(class="proxy link move")
               div(class="swiper__content d-flex")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/2.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/1.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/3.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/13.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/9.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/10.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/11.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/5.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
             
         section#featured_Members.my-5.py-5
           .container
@@ -113,35 +114,35 @@ html(lang="en")
             div(class="proxy link move")
               div(class="swiper__content d-flex")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/11.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/2.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/13.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/3.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/9.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/5.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/6.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/9.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
                 div(class="swiper-slide slide")
-                  +swiperWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+                  +swiperWinners("assets/images/5.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
             
         section#gird.my-5.py-5
           .container
             div(class="card-columns") 
-              +cardWinners("assets/images/audio-mixer-1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/audio-mixer-2.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/audio-mixer-3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/cliffs-daylight-environment-2098403.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/7.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
-              +cardWinners("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/12.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/13.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/2.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/3.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/4.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/7.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/9.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/11.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/10.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/8.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
               
       
         footer
@@ -152,14 +153,14 @@ html(lang="en")
               li: a.link(href="#") الصفحة الرئيسية
               li: a.link(href="#") المرشحين
               li: a.link(href="#") المجمعات
-            a.link: h1.logo LOGO
+            a.link(data-hover="logo"): h1.logo LOGO
             .hr.mb-3
             .copyrights.py-4.d-flex.justify-content-center.align-items-center
               .icons
-                a.p-3.link(href="#"): i.flaticon-facebook.fi
-                a.p-3.link(href="#"): i.flaticon-twitter.fi
-                a.p-3.link(href="#"): i.flaticon-linkedin.fi
-                a.p-3.link(href="#"): i.flaticon-instagram.fi
+                a.p-3.link(href="#" data-hover="Facebook"): i.flaticon-facebook.fi
+                a.p-3.link(href="#" data-hover="Twitter"): i.flaticon-twitter.fi
+                a.p-3.link(href="#" data-hover="Linkedin"): i.flaticon-linkedin.fi
+                a.p-3.link(href="#" data-hover="Instagram"): i.flaticon-instagram.fi
                 p Logo | جميع الحقوق محفوظة 2019
     aside
       ul.p-0
@@ -170,4 +171,8 @@ html(lang="en")
         li.py-3: a(href="#" class="link d-block py-1") معلومات عنا
         
     //- SCRIPTS
+    script(src="assets/js/plugins/progressbar.min.js")
+    script(src="assets/js/plugins/Draggable.min.js")
+    script(src="assets/js/plugins/ThrowPropsPlugin.min.js")
     include assets/includes/_scripts
+    script(src="assets/js/slide.js")
