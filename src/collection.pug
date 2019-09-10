@@ -1,0 +1,64 @@
+
+include assets/includes/_variables
+include assets/includes/_mixins
+include assets/includes/mixins/_card
+doctype html
+html(lang="en")
+  //- HEAD
+  head
+    include assets/includes/_head
+    link(rel="stylesheet", href="assets/css/collection.min.css")
+  body
+    include assets/includes/mixins/_navbar&aside
+    include assets/includes/mixins/_cursor
+    main
+      div(data-scroll)
+        section.filters.mb-4.py-2
+          ul.d-flex
+            li.px-3: a.link(href="#") مصنف بواسطة 
+            li.px-3.groups
+              .dropdown-menu.mt-3.p-3
+                
+                a.link.mx-3(href="#") المواقع
+                a.link.mx-3(href="#") مجموعات
+                a.link.mx-3(href="#") مجلة
+              a.link(href="#") المجموعات 
+            li.px-3.sections
+              .dropdown-menu.mt-3.p-3
+                
+                a.link.mx-3(href="#") Inspiration
+                a.link.mx-3(href="#") Resources
+                a.link.mx-3(href="#") UX/UI
+                a.link.mx-3(href="#") Web technology
+              a.link(href="#") الأقسام
+        section#gird
+          .container
+            div(class="card-columns") 
+              +cardCollection("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/12.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/13.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/11.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/5.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/7.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/1.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              +cardCollection("assets/images/3.jpg","","assets/images/avatar.jpg","","محمود بخيت","مصر")
+              
+        section.pagination.py-5
+          .container
+            .row
+              .col-md-12
+                ul.d-flex
+                  li.px-1: a.p-2.link(href="#") 1
+                  li.px-1: a.p-2.link(href="#") 2
+                  li.px-1: a.p-2.link(href="#") 3
+                  li.px-1: a.p-2.link(href="#") 4
+
+        include assets/includes/mixins/_footer
+
+
+    //- SCRIPTS
+    include assets/includes/_scripts
+      
+      
