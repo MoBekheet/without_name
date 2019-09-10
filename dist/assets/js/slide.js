@@ -69,10 +69,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         this.observer.observe(item);
       }.bind(this));
       this.displayItem();
-      this.initEvents();
       this.swiper();
-      this.noteSiteOpen();
       this.showCaption();
+      this.noteSiteOpen();
+      this.initEvents();
     }
 
     var _proto = Slide.prototype;
@@ -364,59 +364,6 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
     return Slide;
   }();
-
-  var progressBar = function progressBar(el, from, to, _ref2) {
-    var animate = _ref2.animate;
-    var name = new ProgressBar.Circle(el, {
-      color: '#aaa',
-      strokeWidth: 20,
-      trailWidth: 1,
-      easing: 'easeInOut',
-      duration: 2400,
-      text: {
-        autoStyleContainer: false,
-        alignToBottom: true
-      },
-      from: {
-        color: from,
-        width: 1
-      },
-      to: {
-        color: to,
-        width: 7
-      },
-      step: function step(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-        circle.path.setAttribute('stroke-width', state.width);
-        var value = Math.round(circle.value() * 10);
-
-        if (value === 0) {
-          circle.setText('');
-        } else {
-          circle.setText(value);
-        }
-      }
-    });
-    name.animate(animate);
-    name.text.style.fontFamily = '"Cairo",  sans-serif';
-    name.text.style.color = '#333';
-  };
-
-  var design = new progressBar(noteSite[0], '#555', '#dc3545', {
-    animate: 0.9
-  });
-  var usability = new progressBar(noteSite[1], '#555', '#fd7e14', {
-    animate: 0.6
-  });
-  var creativity = new progressBar(noteSite[2], '#555', '#17a2b8', {
-    animate: 0.7
-  });
-  var content = new progressBar(noteSite[3], '#555', '#20c997', {
-    animate: 0.90
-  });
-  var responsive = new progressBar(noteSite[4], '#555', '#28a745', {
-    animate: 0.80
-  });
 
   var DraggableSlider = function () {
     function DraggableSlider(el) {

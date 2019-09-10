@@ -40,9 +40,9 @@
 
     .flaticon-alarm:before { content: "\f100"; }
     .flaticon-settings:before { content: "\f101"; }
-    .flaticon-facebook-logo:before { content: "\f102"; }
-    .flaticon-twitter-logo-on-black-background:before { content: "\f103"; }
-    .flaticon-linkedin-logo:before { content: "\f104"; }
+    .flaticon-facebook:before { content: "\f102"; }
+    .flaticon-twitter:before { content: "\f103"; }
+    .flaticon-linkedin:before { content: "\f104"; }
     .flaticon-instagram:before { content: "\f105"; }
     .flaticon-honor-band-mention:before { content: "\f106"; }
     .flaticon-app:before { content: "\f107"; }
@@ -53,7 +53,8 @@
     .flaticon-coding1:before { content: "\f10c"; }
     .flaticon-app-development-1:before { content: "\f10d"; }
     .flaticon-cancel:before { content: "\f10e"; }
-        
+    .flaticon-share:before { content: "\f10f"; }
+
         $font-Flaticon-alarm: "\f100";
         $font-Flaticon-settings: "\f101";
         $font-Flaticon-facebook-logo: "\f102";
@@ -69,6 +70,8 @@
         $font-Flaticon-app-development: "\f10c";
         $font-Flaticon-app-development-1: "\f10d";
         $font-Flaticon-cancel: "\f10e";
+        $font-Flaticon-share: "\f10f";
+
     // $font-Flaticon-bell: "\f100";
     // $font-Flaticon-like: "\f101";
     // $font-Flaticon-gear: "\f102";

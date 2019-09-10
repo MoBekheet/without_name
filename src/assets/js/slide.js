@@ -30,11 +30,11 @@
       this.items.forEach(item => {
         this.observer.observe(item);
       });
-      this.displayItem()
-      this.initEvents()
+      this.displayItem();
       this.swiper();
-      this.noteSiteOpen();
       this.showCaption();
+      this.noteSiteOpen();
+      this.initEvents();
     }
     initEvents() {
       window.addEventListener('resize', () => this.resize());
@@ -88,7 +88,6 @@
       TweenMax.to(this.items[1].querySelector(".mask_img"), 0, {
         boxShadow: "20px 5px 30px 0px rgba(0, 0, 0, 0.4)",
       });
-
       TweenMax.to(this.items[0].querySelector(".mask_img"), 0, {
         width: winSize.width / 2,
       });
@@ -250,55 +249,7 @@
     }
   }
 
-  class progressBar {
-    constructor(el, from, to, { animate: animate }) {
-      let name = new ProgressBar.Circle(el, {
-        color: '#aaa',
-        strokeWidth: 20,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 2400,
-        text: {
-          autoStyleContainer: false,
-          alignToBottom: true
-        },
-        from: { color: from, width: 1 },
-        to: { color: to, width: 7 },
-        step: function (state, circle) {
-          circle.path.setAttribute('stroke', state.color);
-          circle.path.setAttribute('stroke-width', state.width);
-
-          let value = Math.round(circle.value() * 10);
-          if (value === 0) {
-            circle.setText('');
-          } else {
-            circle.setText(value);
-          }
-        }
-      });
-      name.animate(animate);
-      name.text.style.fontFamily = '"Cairo",  sans-serif';
-      name.text.style.color = '#333';
-
-    }
-  }
-
-  let design = new progressBar(noteSite[0], '#555', '#dc3545', {
-    animate: 0.9
-  });
-  let usability = new progressBar(noteSite[1], '#555', '#fd7e14', {
-    animate: 0.6
-  });
-  let creativity = new progressBar(noteSite[2], '#555', '#17a2b8', {
-    animate: 0.7
-  });
-  let content = new progressBar(noteSite[3], '#555', '#20c997', {
-    animate: 0.90
-  });
-  let responsive = new progressBar(noteSite[4], '#555', '#28a745', {
-    animate: 0.80
-  });
-
+ 
   class DraggableSlider {
 
     constructor(el) {
