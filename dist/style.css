@@ -1,0 +1,638 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.clr{
+    clear: both;
+}
+body
+{
+    background-color: #F4F7F6;
+}
+.homeSection
+{
+
+    height: 700px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.homeSection img
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.homeSection .content
+{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.homeSection .content h2
+{
+    
+    font-size: 30px;
+    font-weight: bolder;
+}
+.homeSection .content .collectIcn
+{
+    color: white;
+    background-color: transparent;
+    border-radius: 36px;
+    border: 1px solid white;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    padding: 10px;
+}
+.homeSection .content .collectIcn:hover{ 
+
+    color:  #00FCA3;
+     border: 1px solid #00FCA3;
+}
+.homeSection .content .likeIcn
+{
+    color: white;
+    background-color: transparent;
+    border-radius: 36px;
+    border: 1px solid white;
+    position: absolute;
+    top: 20px;
+    right: 110px;
+    padding: 10px;
+}
+.homeSection .content .likeIcn:hover{ 
+
+    color:  #00FCA3;
+     border: 1px solid #00FCA3;
+}
+
+.homeSection .content .shareIcn
+{ 
+    color: white;
+    background-color: transparent;
+    border-radius: 36px;
+    border: 1px solid white;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    padding: 10px;
+}
+.homeSection .content .shareIcn:hover{ 
+
+    color:  #00FCA3;
+     border: 1px solid #00FCA3;
+}
+.TagsSection .content
+{
+    height: 200px;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    
+}
+.TagsSection p
+{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.TagsSection a
+{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #202121;
+    display: inline-block;
+    border-radius: 36px;
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    -ms-border-radius: 36px;
+    -o-border-radius: 36px;
+}
+
+.TagsSection a:hover
+{
+    border: 1px solid #09c;
+    color: #09c;
+}
+
+.container
+{
+    width: 80%;
+    margin: auto;
+}
+.bar
+{
+  height: 150px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  border-top: 1px solid #E6EAEA;
+}
+.bar ul li
+{
+    list-style: none;
+     margin-top: 20px;
+    display: inline-block;
+    
+}
+.bar ul li::after
+{
+      content: '.';
+      padding: 0 10px;
+    
+    }
+.bar ul li a
+{
+    color: black;
+    text-decoration: none;
+      margin-right: 10px;
+      padding-bottom: 10px;
+      border-bottom: 4px solid transparent;
+}
+ .bar ul li a:hover
+{
+    color: black;
+    border-bottom: 4px solid #202121;
+  
+}
+
+.photos 
+{ 
+    text-align: center;
+    
+    
+}
+.photos  .photo1
+{
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    width: 80%;
+    
+}
+.photos  .photo1 img 
+{
+    height: 100%;
+    width: 100%;
+}
+.Videos
+{
+    height: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        
+}
+.Videos .VideoCard
+{
+    color: black;
+    width: 30%;
+    height: 80%;
+    background-color: white;
+    margin-right: 30px;
+    margin-left: 30px;
+   
+    
+}
+.Videos .VideoCard .firstContent
+{
+    height: 60%;
+    width: 100%;
+    position: relative;
+}
+.Videos .VideoCard .firstContent video
+{
+    background-color: green;
+    height: 100%   !important;
+    width: 100%    !important;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+}
+
+.Videos .VideoCard .firstContent .overlay1
+{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.Videos .VideoCard .firstContent .overlay1 a
+{
+    border-radius: 36px;
+    padding: 10px;
+    color: white;
+    background-color: #B2B1B2;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.Videos .VideoCard .firstContent .overlay2
+{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+.Videos .VideoCard .firstContent .overlay2 .likeIcn
+{
+   float: right;   
+   border-radius: 36px;
+    padding: 10px;
+   background-color: #B2B1B2;
+    color: white;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.Videos .VideoCard .firstContent .overlay2 .collectIcn
+{
+   float: right;   
+   border-radius: 36px;
+   padding: 10px;
+   background-color: #B2B1B2;
+   color: white;
+   margin-top: 10px;
+   margin-right: 10px;
+
+}
+.Videos .VideoCard .firstContent .overlay2 .shareIcn
+{
+   float: right;   
+   border-radius: 36px;
+   padding: 10px;
+   background-color: #B2B1B2;
+   color: white;   
+   position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+.Videos .VideoCard:hover .firstContent .overlay1{
+    
+    opacity: 0;
+    
+}
+
+.Videos .VideoCard:hover .firstContent .overlay2{
+    
+    opacity: 1;
+    
+}
+
+.Videos .VideoCard .SiteName
+{
+    width: 100%;
+    height: 20%;
+    background-color: transparent;
+}
+.Videos .VideoCard .SiteName h3
+{
+
+    font-size: 25px;
+    font-family: fantasy;
+    padding-right: 20px;
+    padding-top: 20px;
+    text-align: right
+}
+
+.Videos .VideoCard .ownerInfo
+{
+    width: 100%;
+    height: 20%;
+}
+
+.Videos .VideoCard .ownerInfo .Image
+{
+     width: 20%;
+    height: 100%;
+    float: right;
+    padding: 10px;   
+}
+.Videos .VideoCard .ownerInfo .Image img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px dashed white;   
+}
+
+.Videos .VideoCard .ownerInfo .info
+{
+     width: 80%;
+    height: 100%;
+}
+.Videos .VideoCard .ownerInfo .info h3
+{
+    width: 100%;
+    padding-right: 20px;
+    padding-top: 20px;
+    text-align: right;
+}
+
+
+
+.Comments
+{
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+.Comments .comment 
+{
+    height: 100px;
+    margin: 10px;
+    background-color: white;
+
+    
+}
+
+.Comments .comment .commentRate
+{
+    width: 50%;
+    height: 100%;
+  
+    float: left;
+}
+
+.Comments .comment .commentRate .box_noteSite
+{
+    height: 100%;
+    width: 100%;
+    background-color: green;
+}
+.Comments .comment .commentRate .box_noteSite  ul
+{
+    list-style:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Comments .comment .commentRate .box_noteSite ul li{
+ margin:20px;
+  width:50px;
+  height:50px;
+  position:relative;
+  z-index:9;
+  background:#ffffff;
+  border-radius:50%;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  -o-border-radius:50%;
+  -webkit-box-shadow:2px 20px 20px 0px rgba(0,0,0,0.49);
+  box-shadow:2px 20px 20px 0px rgba(0,0,0,0.49); 
+}
+
+.Comments .comment .commentRate .box_noteSite ul  li.design::after
+{
+    
+  content:"التصميم";
+  position:absolute;
+  top:100%;
+  left:50%;
+  color:#fff;
+  font-size:14px;
+  white-space:nowrap;
+  margin-top:10px;
+  text-shadow:-1px 8px 6px #000;
+  transform:translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  -moz-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  -o-transform:translateX(-50%)
+}
+
+.Comments .comment .commentRate .box_noteSite ul li.usability::after
+{
+    
+    content:"سهولة الاستخدام";
+  position:absolute;
+  top:100%;
+  left:50%;
+  color:#fff;
+  font-size:14px;
+  white-space:nowrap;
+  margin-top:10px;
+  text-shadow:-1px 8px 6px #000;
+  transform:translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  -moz-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  -o-transform:translateX(-50%)
+}
+
+.Comments .comment .commentRate .box_noteSite ul li.creativity::after
+{
+    content:"الإبداع";
+  position:absolute;
+  top:100%;left:50%;
+  color:#fff;
+  font-size:14px;
+  white-space:nowrap;
+  margin-top:10px;
+  text-shadow:-1px 8px 6px #000;
+  transform:translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  -moz-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  -o-transform:translateX(-50%)
+}
+
+.Comments .comment .commentRate .box_noteSite ul li.content::after
+{
+  content:"المحتوى";
+  position:absolute;
+  top:100%;
+  left:50%;
+  color:#fff;
+  font-size:14px;
+  white-space:nowrap;
+  margin-top:10px;
+  text-shadow:-1px 8px 6px #000;
+  transform:translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  -moz-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  -o-transform:translateX(-50%)
+}
+
+.Comments .comment .commentRate .box_noteSite ul li.responsive::after
+{
+  content:"متجاوب";
+  position:absolute;
+  top:100%;left:50%;
+  color:#fff;
+  font-size:14px;
+  white-space:nowrap;
+  margin-top:10px;
+  text-shadow:-1px 8px 6px #000;
+  transform:translateX(-50%);
+  -webkit-transform:translateX(-50%);
+  -moz-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  -o-transform:translateX(-50%)
+}
+
+
+.Comments .comment .commentData
+{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.Comments .comment .commentData .Image 
+{
+    width: 20%;
+    height: 100%;
+    float: right;
+    padding: 10px;
+}
+.Comments .comment .commentData .Image img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px dashed white;
+    
+}
+
+.Comments .comment .commentData .info
+{
+     width: 90%;
+    height: 100%;
+    
+
+}
+.Comments .comment .commentData .info h3
+{
+    width: 100%;
+    padding-right: 20px;
+    padding-top: 20px;
+    text-align: right;
+}
+.Comments .comment .commentData .info h4
+{   
+    width: 100%;
+    padding-right: 20px;
+    text-align: right;
+    
+}
+
+footer {
+  direction: rtl;
+  background: url("../images/Shape.svg") no-repeat center center;
+}
+footer .container
+{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+footer .container h1
+{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: "Cairo",sans-serif;
+}
+
+footer .logo {
+    direction: ltr;
+  }
+
+footer ul {
+    list-style: none;
+  }
+footer ul li a
+{
+    text-decoration: none;
+    color: black;
+}
+footer .hr {
+    width: 100%;
+    height: 1px;
+    background-color: #cccccc;
+  }
+
+footer i {
+    font-size: 22px;
+    padding: 0 16px;
+    border-radius: 30px;
+    color: #fff;
+    background-color: #252525;
+
+    
+  }
+footer i:hover 
+{
+      background-color: #00c3da;
+      color: #252525;
+}
+
+footer  p 
+{
+    text-align: center;
+  }
+
+
+@media  (max-width: 992px) {
+ 
+.TagsSection .content
+  {
+    height: 400px;
+  }
+.photos  .photo1
+    {
+        width: 100%;
+    }
+.Videos
+    {
+        height: auto;
+        display: block;
+    }
+.Videos .VideoCard
+    {
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+    }
+.Comments
+    {
+        width: 100%;
+    }
+.Comments .comment .commentData .Image 
+    {
+        width: 30%;
+    }
+}

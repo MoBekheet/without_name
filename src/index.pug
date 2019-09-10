@@ -8,7 +8,12 @@ html(lang="en")
     include assets/includes/_head
     link(rel="stylesheet", href="assets/css/home.min.css")
   body
-
+    .loading.d-flex.align-items-center.justify-content-center
+      .sk-folding-cube
+        div(class="sk-cube1 sk-cube")
+        div(class="sk-cube2 sk-cube")
+        div(class="sk-cube4 sk-cube")
+        div(class="sk-cube3 sk-cube")
     include assets/includes/mixins/_navbar&aside
     include assets/includes/mixins/_cursor
     
@@ -23,15 +28,15 @@ html(lang="en")
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt=null)
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/4.jpg", alt=null)
           #caption.d-flex.align-items-center.flex-column
-            #info
+            #info.mb-4
               #heading-large
                 h1: a(href="#" class="link") موقع اخباري
               #data: span بواسطة 
-                a(href="#" class="link") محمود بخيت 
+                a(href="#" class="link name") محمود بخيت 
                 span من 
                   a(href="#" class="link"): strong مصر 
                   span تقيم 
-                    span 7
+                    span.rating 7
             .box_noteSite
               ul.d-flex.flex-wrap.justify-content-around.justify-content-center
                 li(class="dislink design", data-hover="التصميم")
