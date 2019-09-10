@@ -27,5 +27,5 @@ pug src\index.pug -w -P -o dist
 ### following command to run the babel script and compile main.js
 
 ```
-npm start
+npm run start
 ```
