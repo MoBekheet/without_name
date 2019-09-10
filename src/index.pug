@@ -14,7 +14,6 @@ html(lang="en")
     
     main
       div(data-scroll)
-
         section#site_of_the_day.py-5
           a(href="#" class="overlay")
           .dots
@@ -23,14 +22,25 @@ html(lang="en")
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/2.jpg", alt=null)
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/3.jpg", alt=null)
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/4.jpg", alt=null)
-          #caption
+          #caption.d-flex.align-items-center.flex-column
+            #info
+              #heading-large
+                h1: a(href="#" class="link") موقع اخباري
+              #data: span بواسطة 
+                a(href="#" class="link") محمود بخيت 
+                span من 
+                  a(href="#" class="link"): strong مصر 
+                  span تقيم 
+                    span 7
             .box_noteSite
-              ul.d-flex
+              ul.d-flex.flex-wrap.justify-content-around.justify-content-center
                 li(class="dislink design", data-hover="التصميم")
                 li(class="dislink usability", data-hover="سهولة الاستخدام")
                 li(class="dislink creativity", data-hover="الإبداع")
                 li(class="dislink content", data-hover="المحتوى")
                 li(class="dislink responsive", data-hover="متجاوب")
+            #btnSubmitYourSite
+              a(href="#" class="px-4 py-3 link") !أعرض موقعك الأن
           #info
           h4
           button(type="button" id="close" class="link" data-hover="اضغط هنا") Close 

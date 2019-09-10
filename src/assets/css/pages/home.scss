@@ -1,3 +1,5 @@
+@import "../includes/_main_variables";
+
 $items: ("design""التصميم",
   "usability""سهولة الاستخدام",
   "creativity""الإبداع",
@@ -48,7 +50,7 @@ section#site_of_the_day {
     }
   }
 
-  height: 800px;
+  height: 700px;
   overflow: hidden;
 
   #caption {
@@ -57,18 +59,38 @@ section#site_of_the_day {
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    #info{
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      font-size: 18px;
+      a{
+        color: #fff;
+        font-weight: 700;
+      }
+
+      #data{
+      color: #fff;
+        font-weight: 600;
+      }
+      #heading-large{
+        h1{
+          font-size: 36px;
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
 
 .box_noteSite {
+  margin-bottom: 60px;
   ul {
     list-style: none;
 
     li {
-      margin: 20px;
+      margin: 0 15px;
       width: 100px;
       height: 100px;
       position: relative;
@@ -80,7 +102,7 @@ section#site_of_the_day {
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
       box-shadow: 2px 20px 20px 0px rgba(0, 0, 0, 0.49);
-
+      
       @each $class, $content in $items {
         &.#{$class}::after {
           content: "#{$content}";
@@ -103,7 +125,20 @@ section#site_of_the_day {
   }
 }
 
-
+#btnSubmitYourSite{
+  position: relative;
+  z-index: 3;
+  a{
+    color: $main-color;
+    background-color: $main-bg;
+    box-shadow: 2px 20px 20px 0px rgba(0, 0, 0, 0.49);
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+}
 
 .swiper {
   padding-bottom: size-calc(500);

@@ -7,6 +7,8 @@
   const calcWinSize = () => winSize = { width: window.innerWidth, height: window.innerHeight };
   // and recalculate on resize
   calcWinSize();
+  let noteSite = body.querySelectorAll('.box_noteSite > ul > li');
+
   class Slide {
     constructor() {
       this.DOM = {
@@ -26,7 +28,7 @@
       });
 
       this.displayItem()
-      this.openShow()
+      // this.openShow()
       this.initEvents()
       this.swiper()
     }
@@ -42,9 +44,10 @@
         TweenMax.to(this.DOM.image, 1, {
           left: 0,
           ease: Power1.easeOut
-        })
-      })
-      // this.DOM.site_of_the_day.addEventListener("mousemove", e => this.swiper(e))
+        });
+      });
+      this.DOM.site_of_the_day.querySelector("a.overlay").addEventListener("click", _ => this.openShow());
+      this.DOM.site_of_the_day.querySelector("a.overlay").removeEventListener("click", _ => this.openShow());
     }
     resize() {
       calcWinSize()
@@ -75,12 +78,13 @@
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 0, {
-        boxShadow: "20px 12px 30px rgba(0, 0, 0, 0.40)",
+        boxShadow: "20px 5px 30px 0px rgba(0, 0, 0, 0.4)",
       });
 
       TweenMax.to(this.items[0].querySelector(".mask_img"), 0, {
         width: winSize.width / 2,
       });
+      this.noteSiteOpen();
     }
     closeShow() {
       this.items.forEach(item => {
@@ -109,51 +113,41 @@
         ease: Expo.easeInOut
       });
       TweenMax.to(this.items[1].querySelector(".mask_img"), 1, {
-        boxShadow: "20px 12px 20px rgba(0, 0, 0, 0.40)",
+        boxShadow: "20px 5px 30px 0px rgba(0, 0, 0, 0.4)",
         delay: .5,
       });
+      this.noteSiteOpen();
     }
     openShow() {
-      this.DOM.site_of_the_day.querySelector("a.overlay").addEventListener("click", _ => {
-        this.items.forEach(item => {
-          TweenMax.to(item, 1.6, {
-            delay: 0,
-            y: 0,
-            scale: 1,
-            x: 0,
-            ease: Expo.easeInOut
-          })
-          TweenMax.to(this.items[0], 1.4, {
-            delay: 0,
-            scale: 1,
-            y: 0,
-            x: 0,
-            ease: Expo.easeInOut
-          })
-          TweenMax.to(item.querySelector(".mask_img"), 1.4, {
-            boxShadow: "12px 15px 50px 0px rgba(0, 0, 0, 0.18)",
-            delay: 0.55
-          });
-          TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
-            width: _ => winSize.width > 992 ? "400px" : "300px",
-            ease: Expo.easeInOut
-
-          });
+      this.items.forEach(item => {
+        TweenMax.to(item, 1.6, {
+          delay: 0,
+          y: 0,
+          scale: 1,
+          x: 0,
+          ease: Expo.easeInOut
+        })
+        TweenMax.to(this.items[0], 1.4, {
+          delay: 0,
+          scale: 1,
+          y: 0,
+          x: 0,
+          ease: Expo.easeInOut
+        })
+        TweenMax.to(item.querySelector(".mask_img"), 1.4, {
+          boxShadow: "12px 15px 50px 0px rgba(0, 0, 0, 0.18)",
+          delay: 0.55
         });
-        setTimeout(_ => {
-          this.swiper();
-          isVisible = true
-        }, 1200);
-        this.DOM.noteSite.forEach((i, x) => {
-          TweenMax.from(`.${i.className}`, 1.6, {
-            ease: Back.easeOut,
-            delay: x * .05,
-            startAt: { y: '50%', opacity: 0 },
-            y: '0%',
-            opacity: 1
-          });
+        TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
+          width: _ => winSize.width > 992 ? "400px" : "300px",
+          ease: Expo.easeInOut
         });
       });
+      setTimeout(_ => {
+        this.swiper();
+        isVisible = true
+      }, 1200);
+      this.noteSiteClose();
     }
     swiper() {
       this.DOM.site_of_the_day.addEventListener("mousemove", e => {
@@ -173,22 +167,44 @@
         }
       })
     }
+    noteSiteOpen() {
+      noteSite.forEach((i, x) => {
+        TweenMax.to(`.${i.className.slice(8)}`, 1, {
+          ease: Back.easeOut,
+          delay: x * .05,
+          startAt: { y: '100%', opacity: 0 },
+          y: '0%',
+          opacity: 1
+        });
+      });
+    }
+    noteSiteClose() {
+      noteSite.forEach((i, x) => {
+        TweenMax.to(`.${i.className.slice(8)}`, .8, {
+          ease: Back.easeIn,
+          delay: x * .05,
+          startAt: { y: '0%', opacity: 1 },
+          y: '100%',
+          opacity: 0
+        });
+      });
+    }
   }
 
-  class progressBar{
-    constructor(el,from,to,{animate:animate}){
+  class progressBar {
+    constructor(el, from, to, { animate: animate }) {
       let name = new ProgressBar.Circle(el, {
         color: '#aaa',
-          strokeWidth: 20,
-          trailWidth: 1,
-          easing: 'easeInOut',
-          duration: 2400,
-          text: {
-            autoStyleContainer: false,
-            alignToBottom: true
-          },
-          from: { color: from, width: 1 },
-          to: { color: to, width: 7 },
+        strokeWidth: 20,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 2400,
+        text: {
+          autoStyleContainer: false,
+          alignToBottom: true
+        },
+        from: { color: from, width: 1 },
+        to: { color: to, width: 7 },
         step: function (state, circle) {
           circle.path.setAttribute('stroke', state.color);
           circle.path.setAttribute('stroke-width', state.width);
@@ -205,37 +221,30 @@
       name.text.style.fontFamily = '"Cairo",  sans-serif';
       name.text.style.fontSize = '2rem';
       name.text.style.color = '#333';
-      [el].forEach((i, x) => {
-        TweenMax.to(`.${i.className.slice(8)}`, 2, {
-          ease: Back.easeOut,
-          delay: x * .05,
-          startAt: { y: '100%', opacity: 0 },
-          y: '0%',
-          opacity: 1
-        });
-      });
+
     }
   }
-  let design = new progressBar(body.querySelector('.box_noteSite > ul > li.design'),'#555','#dc3545',{
+
+  let design = new progressBar(noteSite[0], '#555', '#dc3545', {
     animate: 0.9
   });
-  let usability = new progressBar(body.querySelector('.box_noteSite > ul > li.usability'),'#555','#fd7e14',{
+  let usability = new progressBar(noteSite[1], '#555', '#fd7e14', {
     animate: 0.6
   });
-  let creativity = new progressBar(body.querySelector('.box_noteSite > ul > li.creativity'),'#555','#17a2b8',{
+  let creativity = new progressBar(noteSite[2], '#555', '#17a2b8', {
     animate: 0.7
   });
-  let content = new progressBar(body.querySelector('.box_noteSite > ul > li.content'),'#555','#20c997',{
+  let content = new progressBar(noteSite[3], '#555', '#20c997', {
     animate: 0.90
   });
-  let responsive = new progressBar(body.querySelector('.box_noteSite > ul > li.responsive'),'#555','#28a745',{
+  let responsive = new progressBar(noteSite[4], '#555', '#28a745', {
     animate: 0.80
   });
 
   class DraggableSlider {
 
     constructor(el) {
-      this.DOM = {el: el}
+      this.DOM = { el: el }
       this.container = this.DOM.el;
       this.proxy = this.DOM.el.querySelector(".proxy");
       this.slider = this.DOM.el.querySelector('.swiper__inner');
@@ -248,7 +257,7 @@
       this.last = 0;
       this.initEvents();
       this.init();
-      
+
     }
 
     setBounds() {
@@ -316,7 +325,7 @@
     }
   }
   new Slide();
-  [...body.querySelectorAll('.swiper')].forEach(el =>{
+  [...body.querySelectorAll('.swiper')].forEach(el => {
     new DraggableSlider(el);
   })
 }

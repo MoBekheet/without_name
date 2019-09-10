@@ -1,0 +1,36 @@
+include assets/includes/_variables
+include assets/includes/_mixins
+include assets/includes/mixins/_card
+doctype html
+html(lang="en")
+  //- HEAD
+  head
+    include assets/includes/_head
+  body
+
+    include assets/includes/mixins/_navbar&aside
+    include assets/includes/mixins/_cursor
+    
+    main
+      div(data-scroll)
+        section#gird.my-5.py-5
+          .container
+            div(class="card-columns") 
+              +cardWinners("assets/images/12.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/13.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/2.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/3.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/4.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/7.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/9.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/11.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/10.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+              +cardWinners("assets/images/8.jpg",null,"assets/images/avatar.jpg",null,"محمود بخيت","30","مصر","3 فبراير 2018")
+          
+
+
+
+        include assets/includes/mixins/_footer
+    
+    //- SCRIPTS
+    include assets/includes/_scripts
