@@ -15,7 +15,7 @@ html(lang="en")
     main
       div(data-scroll)
         section#site_of_the_day.py-5
-          a(href="#" class="overlay")
+          a(href="#" class="overlay link" data-hover="عرض")
           .dots
           #items.m-0.d-flex.align-items-center.justify-content-start
             .item.item_scroll.link: .mask_img.item__img-wrap: img(class="item__img" src="assets/images/1.jpg", alt=null)
@@ -41,11 +41,11 @@ html(lang="en")
                 li(class="dislink responsive", data-hover="متجاوب")
             #btnSubmitYourSite
               a(href="#" class="px-4 py-3 link") !أعرض موقعك الأن
-          #info
-          h4
-          button(type="button" id="close" class="link" data-hover="اضغط هنا") Close 
+          #info_down.d-flex.justify-content-center
+            button(type="button" id="close" class="link mt-4" data-hover="خروج"): i.fi.flaticon-cancel
         
         section#Winners.my-5.py-5
+          .dots
           .container
             .head_title.mb-5.mt-0
               h2 مواقع اليوم 
@@ -74,8 +74,8 @@ html(lang="en")
         section#nominees.my-5.py-5
           .container
             .head_title.mb-5.mt-0
-              h2 مواقع اليوم 
-                span الفائزين السابقين
+              h2 !المرشحين 
+                span نحن بحاجة لصوتك
           div(class="swiper__slider swiper")
             div(class="swiper__inner")
             div(class="proxy link move")
@@ -100,8 +100,8 @@ html(lang="en")
         section#featured_Members.my-5.py-5
           .container
             .head_title.mb-5.mt-0
-              h2 مواقع اليوم 
-                span الفائزين السابقين
+              h2 الأعضاء 
+                span المميزون
           div(class="swiper__slider swiper")
             div(class="swiper__inner")
             div(class="proxy link move")

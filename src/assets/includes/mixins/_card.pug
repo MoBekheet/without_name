@@ -55,14 +55,13 @@ mixin swiperWinners(src, alt, srcAvatar, altAvatar, name,projects,form,date)
             li: i(data-hover="فائز اليوم").dislink.flaticon-medal.fi.mx-2
             li: i(data-hover="موبايل الأسبوع").dislink.flaticon-coding1.fi.mx-2
             li: i(data-hover="موقع مطور").dislink.flaticon-coding.fi.mx-2
-      //- p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
 
 
 mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
-      .caption.d-flex.align-items-center.px-3
+      .caption.d-flex.align-items-center.p-3
         .avatar
           img(src=srcAvatar, alt=altAvatar)
         .box.mr-2
@@ -70,28 +69,23 @@ mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block px-3 py-1 mx-1")
+          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أعجبني")
             i.flaticon-like.fi.mr-2
             span 35
-          a(href="#" class="d-inline-block vote px-5 py-3  mx-1") !صوت الآن
+          a(href="#" class="d-inline-block vote px-5 py-3 mx-1") !صوت الآن
 
-          
 
     .caption_down
       h4.title.my-1 وردبربس لشركة طبيبة
       p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
 
 
-
-
-
-
 mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
-      .caption.d-flex.align-items-center.px-3
+      .caption.d-flex.align-items-center.p-3
         .avatar
           img(src=srcAvatar, alt=altAvatar)
         .box.mr-2

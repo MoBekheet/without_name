@@ -37,63 +37,47 @@
       font-smoothing: antialiased;
     }
 
-    .flaticon-bell:before {
-      content: "\f100";
-    }
 
-    .flaticon-like:before {
-      content: "\f101";
-    }
-
-    .flaticon-gear:before {
-      content: "\f102";
-    }
-
-    .flaticon-app:before {
-      content: "\f103";
-    }
-
-    .flaticon-facebook:before {
-      content: "\f104";
-    }
-
-    .flaticon-twitter:before {
-      content: "\f105";
-    }
-
-    .flaticon-linkedin:before {
-      content: "\f106";
-    }
-
-    .flaticon-instagram:before {
-      content: "\f107";
-    }
-
-    .flaticon-honor-band-mention:before {
-      content: "\f108";
-    }
-
-    .flaticon-coding1:before {
-      content: "\f109";
-    }
-
-    .flaticon-coding:before {
-      content: "\f10a";
-    }
-
-    .flaticon-medal:before {
-      content: "\f10b";
-    }
-
-    $font-Flaticon-bell: "\f100";
-    $font-Flaticon-like: "\f101";
-    $font-Flaticon-gear: "\f102";
-    $font-Flaticon-app: "\f103";
-    $font-Flaticon-facebook: "\f104";
-    $font-Flaticon-twitter: "\f105";
-    $font-Flaticon-linkedin: "\f106";
-    $font-Flaticon-instagram: "\f107";
-    $font-Flaticon-honor-band-mention: "\f108";
-    $font-Flaticon-coding1: "\f109";
-    $font-Flaticon-coding: "\f10a";
-    $font-Flaticon-medal: "\f10b";
+    .flaticon-alarm:before { content: "\f100"; }
+    .flaticon-settings:before { content: "\f101"; }
+    .flaticon-facebook-logo:before { content: "\f102"; }
+    .flaticon-twitter-logo-on-black-background:before { content: "\f103"; }
+    .flaticon-linkedin-logo:before { content: "\f104"; }
+    .flaticon-instagram:before { content: "\f105"; }
+    .flaticon-honor-band-mention:before { content: "\f106"; }
+    .flaticon-app:before { content: "\f107"; }
+    .flaticon-medal:before { content: "\f108"; }
+    .flaticon-like:before { content: "\f109"; }
+    .flaticon-coding:before { content: "\f10a"; }
+    .flaticon-code:before { content: "\f10b"; }
+    .flaticon-coding1:before { content: "\f10c"; }
+    .flaticon-app-development-1:before { content: "\f10d"; }
+    .flaticon-cancel:before { content: "\f10e"; }
+        
+        $font-Flaticon-alarm: "\f100";
+        $font-Flaticon-settings: "\f101";
+        $font-Flaticon-facebook-logo: "\f102";
+        $font-Flaticon-twitter-logo-on-black-background: "\f103";
+        $font-Flaticon-linkedin-logo: "\f104";
+        $font-Flaticon-instagram-social-network-logo-of-photo-camera: "\f105";
+        $font-Flaticon-honor-band-mention: "\f106";
+        $font-Flaticon-app: "\f107";
+        $font-Flaticon-medal: "\f108";
+        $font-Flaticon-like: "\f109";
+        $font-Flaticon-seo-and-web: "\f10a";
+        $font-Flaticon-code: "\f10b";
+        $font-Flaticon-app-development: "\f10c";
+        $font-Flaticon-app-development-1: "\f10d";
+        $font-Flaticon-cancel: "\f10e";
+    // $font-Flaticon-bell: "\f100";
+    // $font-Flaticon-like: "\f101";
+    // $font-Flaticon-gear: "\f102";
+    // $font-Flaticon-app: "\f103";
+    // $font-Flaticon-facebook: "\f104";
+    // $font-Flaticon-twitter: "\f105";
+    // $font-Flaticon-linkedin: "\f106";
+    // $font-Flaticon-instagram: "\f107";
+    // $font-Flaticon-honor-band-mention: "\f108";
+    // $font-Flaticon-coding1: "\f109";
+    // $font-Flaticon-coding: "\f10a";
+    // $font-Flaticon-medal: "\f10b";

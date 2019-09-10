@@ -5,6 +5,6 @@
     </clipPath>
   </defs>
   <g id="custom_1" data-name="custom – 1" clip-path="url(#clip-custom_1)">
-    <circle id="Ellipse_1" data-name="Ellipse 1" cx="1" cy="1" r="1" transform="translate(5 5)" fill="#dddddd"/>
+    <circle id="Ellipse_1" data-name="Ellipse 2" cx="1" cy="1" r="1" transform="translate(5 5)" fill="#ccc"/>
   </g>
 </svg>

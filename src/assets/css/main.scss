@@ -23,7 +23,7 @@ a {
     color: #00c3da
   }
 }
-
+ul {list-style: none;}
 main {
   position: fixed;
   height: 100%;
@@ -102,6 +102,17 @@ main {
   -o-border-radius: 50%;
 }
 
+.dots {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: url("../images/dots.svg") repeat top left;
+  width: 100%;
+  height: 500px;
+  z-index: 0;
+  opacity: .8;
+}
 
 [data-scroll] {
   will-change: transform;
@@ -163,8 +174,6 @@ aside {
   }
 
   ul {
-    list-style: none;
-
     li {
       text-align: center;
       border-bottom: 1px dashed rgba(0, 0, 0, 0.109804);
@@ -281,22 +290,20 @@ nav#backdrop {
     direction: rtl;
 
     ul {
-      list-style: none;
-
       li {
         .flaticon-honor-band-mention {
-          font-size: 24px;
+          font-size: 25px;
           color: $red
         }
 
         .flaticon-medal {
           color: $teal;
-          font-size: 24px
+          font-size: 25px
         }
 
         .flaticon-coding1 {
           color: $orange;
-          font-size: 24px
+          font-size: 23px;
         }
 
         .flaticon-coding {
@@ -382,10 +389,6 @@ footer {
     direction: ltr;
   }
 
-  ul {
-    list-style: none;
-  }
-
   .hr {
     width: 100%;
     height: 1px;
@@ -409,3 +412,4 @@ footer {
     text-align: center;
   }
 }
+

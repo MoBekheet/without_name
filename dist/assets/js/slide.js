@@ -34,10 +34,15 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       var _this2 = this;
 
       this.DOM = {
-        close: body.querySelector("#close"),
         site_of_the_day: body.querySelector("section#site_of_the_day"),
+        close: site_of_the_day.querySelector("#close"),
         items: site_of_the_day.querySelector("#items"),
-        image: items.querySelectorAll(".item__img")
+        image: items.querySelectorAll(".item__img"),
+        overlay: site_of_the_day.querySelector("a.overlay"),
+        caption: site_of_the_day.querySelector("#caption"),
+        heading: caption.querySelector("#heading-large"),
+        data: caption.querySelector("#data"),
+        btnSubmitYourSite: caption.querySelector("#btnSubmitYourSite")
       };
       this.items = [];
 
@@ -66,6 +71,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       this.displayItem();
       this.initEvents();
       this.swiper();
+      this.noteSiteOpen();
+      this.showCaption();
     }
 
     var _proto = Slide.prototype;
@@ -78,36 +85,36 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
         return this.resize();
       }.bind(this));
-      this.DOM.close.addEventListener("click", function (_) {
-        _newArrowCheck(this, _this4);
 
-        this.closeShow();
-        isVisible = false;
-        TweenMax.to(this.DOM.items, 1, {
-          x: 0,
-          ease: Power1.easeOut
-        });
-        TweenMax.to(this.DOM.image, 1, {
-          left: 0,
-          ease: Power1.easeOut
-        });
-      }.bind(this));
-      this.DOM.site_of_the_day.querySelector("a.overlay").addEventListener("click", function (_) {
-        _newArrowCheck(this, _this4);
+      if (winSize.width > 992) {
+        this.DOM.close.addEventListener("click", function (_) {
+          _newArrowCheck(this, _this4);
 
-        return this.openShow();
-      }.bind(this));
-      this.DOM.site_of_the_day.querySelector("a.overlay").removeEventListener("click", function (_) {
-        _newArrowCheck(this, _this4);
+          this.closeShow();
+          isVisible = false;
+          TweenMax.to(this.DOM.items, 1, {
+            x: 0,
+            ease: Power1.easeOut
+          });
+          TweenMax.to(this.DOM.image, 1, {
+            left: 0,
+            ease: Power1.easeOut
+          });
+        }.bind(this));
+        if (!isMobile) this.DOM.overlay.addEventListener("click", function (_) {
+          _newArrowCheck(this, _this4);
 
-        return this.openShow();
-      }.bind(this));
+          this.openShow();
+          TweenMax.to(this.DOM.overlay, 0, {
+            pointerEvents: "none"
+          });
+        }.bind(this));
+      }
     };
 
     _proto.resize = function resize() {
       calcWinSize();
       if (isVisible == false) this.displayItem();
-      this.openShow();
     };
 
     _proto.displayItem = function displayItem() {
@@ -142,7 +149,14 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       TweenMax.to(this.items[0].querySelector(".mask_img"), 0, {
         width: winSize.width / 2
       });
-      this.noteSiteOpen();
+      TweenMax.to(this.DOM.close, 0, {
+        pointerEvents: "none",
+        startAt: {
+          y: '0%',
+          opacity: 1
+        },
+        opacity: 0
+      });
     };
 
     _proto.closeShow = function closeShow() {
@@ -179,7 +193,25 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         boxShadow: "20px 5px 30px 0px rgba(0, 0, 0, 0.4)",
         delay: .5
       });
-      this.noteSiteOpen();
+      TweenMax.to(this.DOM.close, 1, {
+        ease: Back.easeIn,
+        pointerEvents: "none",
+        startAt: {
+          y: '0%',
+          opacity: 1
+        },
+        y: '100%',
+        opacity: 0
+      });
+      TweenMax.to(this.DOM.overlay, 0, {
+        delay: 1.4,
+        pointerEvents: "visible"
+      });
+
+      if (!isMobile) {
+        this.showCaption();
+        this.noteSiteOpen();
+      }
     };
 
     _proto.openShow = function openShow() {
@@ -224,6 +256,47 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         isVisible = true;
       }.bind(this), 1200);
       this.noteSiteClose();
+      this.closeCaption();
+      TweenMax.to(this.DOM.close, 0, {
+        delay: 1.4,
+        pointerEvents: "visible"
+      });
+      TweenMax.to(this.DOM.close, 1, {
+        delay: .5,
+        ease: Back.easeOut,
+        startAt: {
+          y: '100%',
+          opacity: 0
+        },
+        y: '0%',
+        opacity: 1
+      });
+    };
+
+    _proto.showCaption = function showCaption() {
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+        ease: Back.easeOut,
+        pointerEvents: "visible",
+        startAt: {
+          y: '100%',
+          opacity: 0
+        },
+        y: '0%',
+        opacity: 1
+      });
+    };
+
+    _proto.closeCaption = function closeCaption() {
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+        ease: Back.easeIn,
+        pointerEvents: "none",
+        startAt: {
+          y: '0%',
+          opacity: 1
+        },
+        y: '100%',
+        opacity: 0
+      });
     };
 
     _proto.swiper = function swiper() {
@@ -263,7 +336,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
             opacity: 0
           },
           y: '0%',
-          opacity: 1
+          opacity: 1,
+          pointerEvents: "visible"
         });
       }.bind(this));
     };
@@ -282,7 +356,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
             opacity: 1
           },
           y: '100%',
-          opacity: 0
+          opacity: 0,
+          pointerEvents: "none"
         });
       }.bind(this));
     };
@@ -324,7 +399,6 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     });
     name.animate(animate);
     name.text.style.fontFamily = '"Cairo",  sans-serif';
-    name.text.style.fontSize = '2rem';
     name.text.style.color = '#333';
   };
 

@@ -12,12 +12,16 @@
   class Slide {
     constructor() {
       this.DOM = {
-        close: body.querySelector("#close"),
         site_of_the_day: body.querySelector("section#site_of_the_day"),
+        close: site_of_the_day.querySelector("#close"),
         items: site_of_the_day.querySelector("#items"),
         image: items.querySelectorAll(".item__img"),
+        overlay: site_of_the_day.querySelector("a.overlay"),
+        caption: site_of_the_day.querySelector("#caption"),
+        heading: caption.querySelector("#heading-large"),
+        data: caption.querySelector("#data"),
+        btnSubmitYourSite: caption.querySelector("#btnSubmitYourSite"),
       };
-
       this.items = [];
       [...this.DOM.items.querySelectorAll('.item')].forEach(item => this.items.push(item));
       this.observer = new IntersectionObserver((entries) => {
@@ -26,33 +30,38 @@
       this.items.forEach(item => {
         this.observer.observe(item);
       });
-
       this.displayItem()
-      // this.openShow()
       this.initEvents()
-      this.swiper()
+      this.swiper();
+      this.noteSiteOpen();
+      this.showCaption();
     }
     initEvents() {
       window.addEventListener('resize', () => this.resize());
-      this.DOM.close.addEventListener("click", _ => {
-        this.closeShow()
-        isVisible = false
-        TweenMax.to(this.DOM.items, 1, {
-          x: 0,
-          ease: Power1.easeOut
+      if (winSize.width > 992) {
+        this.DOM.close.addEventListener("click", _ => {
+          this.closeShow()
+          isVisible = false
+          TweenMax.to(this.DOM.items, 1, {
+            x: 0,
+            ease: Power1.easeOut
+          });
+          TweenMax.to(this.DOM.image, 1, {
+            left: 0,
+            ease: Power1.easeOut
+          });
         });
-        TweenMax.to(this.DOM.image, 1, {
-          left: 0,
-          ease: Power1.easeOut
+        if (!isMobile) this.DOM.overlay.addEventListener("click", _ => {
+          this.openShow();
+          TweenMax.to(this.DOM.overlay, 0, {
+            pointerEvents: "none",
+          });
         });
-      });
-      this.DOM.site_of_the_day.querySelector("a.overlay").addEventListener("click", _ => this.openShow());
-      this.DOM.site_of_the_day.querySelector("a.overlay").removeEventListener("click", _ => this.openShow());
+      }
     }
     resize() {
       calcWinSize()
       if (isVisible == false) this.displayItem();
-      this.openShow()
     }
     displayItem() {
       this.items.forEach(item => {
@@ -70,7 +79,6 @@
         x: winSize.width / 1.8,
         ease: Expo.easeInOut
       });
-
       TweenMax.to(this.items[1], 0, {
         scale: 1.1,
         y: this.items[1].clientHeight / 2.2,
@@ -84,7 +92,11 @@
       TweenMax.to(this.items[0].querySelector(".mask_img"), 0, {
         width: winSize.width / 2,
       });
-      this.noteSiteOpen();
+      TweenMax.to(this.DOM.close, 0, {
+        pointerEvents: "none",
+        startAt: { y: '0%', opacity: 1 },
+        opacity: 0,
+      });
     }
     closeShow() {
       this.items.forEach(item => {
@@ -116,7 +128,22 @@
         boxShadow: "20px 5px 30px 0px rgba(0, 0, 0, 0.4)",
         delay: .5,
       });
-      this.noteSiteOpen();
+      TweenMax.to(this.DOM.close, 1, {
+        ease: Back.easeIn,
+        pointerEvents: "none",
+        startAt: { y: '0%', opacity: 1 },
+        y: '100%',
+        opacity: 0
+      });
+      TweenMax.to(this.DOM.overlay, 0, {
+        delay: 1.4,
+        pointerEvents: "visible"
+      });
+      if (!isMobile) {
+        this.showCaption();
+        this.noteSiteOpen();
+      }
+      
     }
     openShow() {
       this.items.forEach(item => {
@@ -148,6 +175,36 @@
         isVisible = true
       }, 1200);
       this.noteSiteClose();
+      this.closeCaption();
+      TweenMax.to(this.DOM.close, 0, {
+        delay: 1.4,
+        pointerEvents: "visible"
+      });
+      TweenMax.to(this.DOM.close, 1, {
+        delay: .5,
+        ease: Back.easeOut,
+        startAt: { y: '100%', opacity: 0 },
+        y: '0%',
+        opacity: 1
+      });
+    }
+    showCaption(){
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+        ease: Back.easeOut,
+        pointerEvents: "visible",
+        startAt: { y: '100%', opacity: 0 },
+        y: '0%',
+        opacity: 1
+      });
+    }
+    closeCaption(){
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+        ease: Back.easeIn,
+        pointerEvents: "none",
+        startAt: { y: '0%', opacity: 1 },
+        y: '100%',
+        opacity: 0
+      });
     }
     swiper() {
       this.DOM.site_of_the_day.addEventListener("mousemove", e => {
@@ -174,7 +231,8 @@
           delay: x * .05,
           startAt: { y: '100%', opacity: 0 },
           y: '0%',
-          opacity: 1
+          opacity: 1,
+          pointerEvents: "visible"
         });
       });
     }
@@ -185,7 +243,8 @@
           delay: x * .05,
           startAt: { y: '0%', opacity: 1 },
           y: '100%',
-          opacity: 0
+          opacity: 0,
+          pointerEvents: "none"
         });
       });
     }
@@ -219,7 +278,6 @@
       });
       name.animate(animate);
       name.text.style.fontFamily = '"Cairo",  sans-serif';
-      name.text.style.fontSize = '2rem';
       name.text.style.color = '#333';
 
     }
