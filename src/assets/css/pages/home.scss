@@ -3,10 +3,18 @@
 
 section#site_of_the_day {
   // padding: 3em 0;
+  // background-color: $main-color;
   position: relative;
   height: 700px;
   overflow: hidden;
-
+  #split{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $main-color;
+  }
   a.overlay {
     position: absolute;
     top: 0;
@@ -14,7 +22,7 @@ section#site_of_the_day {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: linear-gradient(0deg, #ffffff26, #0000003b);
+    // background: linear-gradient(0deg, #ffffff26, #0000003b);
   }
 
 
@@ -121,7 +129,8 @@ section#site_of_the_day {
           color: $main-color-hover;
         }
         .rating{
-          font-size: 18px;
+          font-size: 23px;
+          line-height: 1;
         }
       }
 

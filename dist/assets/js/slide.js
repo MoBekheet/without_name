@@ -68,6 +68,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
         this.observer.observe(item);
       }.bind(this));
+      this.displayItem();
       this.swiper();
       this.showCaption();
       this.noteSiteOpen();
@@ -217,14 +218,19 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         this.showCaption();
         this.noteSiteOpen();
       }
+
+      TweenMax.to(this.DOM.site_of_the_day.querySelector("#split"), 1.4, {
+        delay: .33,
+        x: "0%",
+        y: 0,
+        ease: Power2.easeInOut
+      });
     };
 
     _proto.openShow = function openShow() {
       var _this7 = this;
 
       this.items.forEach(function (item) {
-        var _this8 = this;
-
         _newArrowCheck(this, _this7);
 
         TweenMax.to(item, 1.6, {
@@ -234,26 +240,31 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           x: 0,
           ease: Expo.easeInOut
         });
-        TweenMax.to(this.items[0], 1.4, {
-          delay: 0,
-          scale: 1,
-          y: 0,
-          x: 0,
-          ease: Expo.easeInOut
-        });
         TweenMax.to(item.querySelector(".mask_img"), 1.4, {
           boxShadow: "12px 15px 50px 0px rgba(0, 0, 0, 0.18)",
           delay: 0.55
         });
-        TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
-          width: function width(_) {
-            _newArrowCheck(this, _this8);
-
-            return winSize.width > 992 ? "400px" : "300px";
-          }.bind(this),
-          ease: Expo.easeInOut
-        });
       }.bind(this));
+      TweenMax.to(this.items[0], 1.4, {
+        delay: 0,
+        scale: 1,
+        y: 0,
+        x: 0,
+        ease: Expo.easeInOut
+      });
+      TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
+        width: function width(_) {
+          _newArrowCheck(this, _this7);
+
+          return winSize.width > 992 ? "400px" : "300px";
+        }.bind(this),
+        ease: Expo.easeInOut
+      });
+      TweenMax.to(this.DOM.site_of_the_day.querySelector("#split"), 1.2, {
+        x: "-100%",
+        y: 0,
+        ease: Power2.easeInOut
+      });
       setTimeout(function (_) {
         _newArrowCheck(this, _this7);
 
@@ -305,22 +316,20 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.swiper = function swiper() {
-      var _this9 = this;
+      var _this8 = this;
 
       this.DOM.site_of_the_day.addEventListener("mousemove", function (e) {
-        _newArrowCheck(this, _this9);
+        _newArrowCheck(this, _this8);
 
         if (isVisible) {
           var offset = e.clientX / body.clientWidth * this.DOM.items.clientWidth - this.DOM.items.clientWidth / 3;
           var imgOffset = e.clientX / body.clientWidth * 45 - 65;
-          var _ref = [-offset];
-          offset = _ref[0];
           TweenMax.to(this.DOM.image, 1, {
             left: imgOffset,
             ease: Power1.easeOut
           });
           TweenMax.to(this.DOM.items, 1, {
-            x: offset,
+            x: -1 * offset,
             ease: Power1.easeOut
           });
         }
@@ -328,10 +337,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.noteSiteOpen = function noteSiteOpen() {
-      var _this10 = this;
+      var _this9 = this;
 
       noteSite.forEach(function (i, x) {
-        _newArrowCheck(this, _this10);
+        _newArrowCheck(this, _this9);
 
         TweenMax.to(".".concat(i.className.slice(8)), 1, {
           ease: Back.easeOut,
@@ -348,10 +357,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.noteSiteClose = function noteSiteClose() {
-      var _this11 = this;
+      var _this10 = this;
 
       noteSite.forEach(function (i, x) {
-        _newArrowCheck(this, _this11);
+        _newArrowCheck(this, _this10);
 
         TweenMax.to(".".concat(i.className.slice(8)), .8, {
           ease: Back.easeIn,
@@ -370,8 +379,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     return Slide;
   }();
 
-  var progressBar = function progressBar(el, from, to, _ref2) {
-    var animate = _ref2.animate;
+  var progressBar = function progressBar(el, from, to, _ref) {
+    var animate = _ref.animate;
     var name = new ProgressBar.Circle(el, {
       color: '#aaa',
       strokeWidth: 20,
@@ -454,10 +463,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto2.initEvents = function initEvents() {
-      var _this12 = this;
+      var _this11 = this;
 
       window.addEventListener('resize', function () {
-        _newArrowCheck(this, _this12);
+        _newArrowCheck(this, _this11);
 
         return this.resize();
       }.bind(this));
@@ -536,13 +545,19 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     return DraggableSlider;
   }();
 
+  _toConsumableArray(body.querySelectorAll('.swiper')).forEach(function (el) {
+    _newArrowCheck(this, _this);
+
+    new DraggableSlider(el);
+  }.bind(void 0));
+
   var preloadImages = function preloadImages() {
-    var _this13 = this;
+    var _this12 = this;
 
     _newArrowCheck(this, _this);
 
     return new Promise(function (resolve, reject) {
-      _newArrowCheck(this, _this13);
+      _newArrowCheck(this, _this12);
 
       imagesLoaded(document.querySelectorAll('.item__img'), {
         background: true
@@ -551,17 +566,9 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   preloadImages().then(function () {
-    var _this14 = this;
-
     _newArrowCheck(this, _this);
 
-    new Slide().closeShow();
-
-    _toConsumableArray(body.querySelectorAll('.swiper')).forEach(function (el) {
-      _newArrowCheck(this, _this14);
-
-      new DraggableSlider(el);
-    }.bind(this));
+    new Slide();
   }.bind(void 0));
 }
 //# sourceMappingURL=slide.js.map

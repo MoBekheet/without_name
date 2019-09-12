@@ -30,7 +30,7 @@
       this.items.forEach(item => {
         this.observer.observe(item);
       });
-      // this.displayItem();
+      this.displayItem();
       this.swiper();
       this.showCaption();
       this.noteSiteOpen();
@@ -148,7 +148,12 @@
         this.showCaption();
         this.noteSiteOpen();
       }
-      
+      TweenMax.to(this.DOM.site_of_the_day.querySelector("#split"), 1.4, {
+        delay: .33,
+        x: "0%",
+        y: 0,
+        ease: Power2.easeInOut
+      });
     }
     openShow() {
       this.items.forEach(item => {
@@ -159,21 +164,26 @@
           x: 0,
           ease: Expo.easeInOut
         })
-        TweenMax.to(this.items[0], 1.4, {
-          delay: 0,
-          scale: 1,
-          y: 0,
-          x: 0,
-          ease: Expo.easeInOut
-        })
         TweenMax.to(item.querySelector(".mask_img"), 1.4, {
           boxShadow: "12px 15px 50px 0px rgba(0, 0, 0, 0.18)",
           delay: 0.55
         });
-        TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
-          width: _ => winSize.width > 992 ? "400px" : "300px",
-          ease: Expo.easeInOut
-        });
+      });
+      TweenMax.to(this.items[0], 1.4, {
+        delay: 0,
+        scale: 1,
+        y: 0,
+        x: 0,
+        ease: Expo.easeInOut
+      });
+      TweenMax.to(this.items[0].querySelector(".mask_img"), 1.4, {
+        width: _ => winSize.width > 992 ? "400px" : "300px",
+        ease: Expo.easeInOut
+      });
+      TweenMax.to(this.DOM.site_of_the_day.querySelector("#split"), 1.2, {
+        x: "-100%",
+        y: 0,
+        ease: Power2.easeInOut
       });
       setTimeout(_ => {
         this.swiper();
@@ -193,7 +203,7 @@
         opacity: 1
       });
     }
-    showCaption(){
+    showCaption() {
       TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
         ease: Back.easeOut,
         pointerEvents: "visible",
@@ -202,7 +212,7 @@
         opacity: 1
       });
     }
-    closeCaption(){
+    closeCaption() {
       TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
         ease: Back.easeIn,
         pointerEvents: "none",
@@ -216,14 +226,14 @@
         if (isVisible) {
           let offset = e.clientX / body.clientWidth * this.DOM.items.clientWidth - (this.DOM.items.clientWidth / 3);
           let imgOffset = e.clientX / body.clientWidth * 45 - 65;
-          [offset] = [-offset]
+          // [offset] = [-offset]
 
           TweenMax.to(this.DOM.image, 1, {
             left: imgOffset,
             ease: Power1.easeOut
           })
           TweenMax.to(this.DOM.items, 1, {
-            x: offset,
+            x: -1 * offset,
             ease: Power1.easeOut
           })
         }
@@ -387,8 +397,11 @@
       this.createDraggable()
     }
   }
-  
 
+
+  [...body.querySelectorAll('.swiper')].forEach(el => {
+    new DraggableSlider(el);
+  });
   const preloadImages = () => {
     return new Promise((resolve, reject) => {
       imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);
@@ -397,10 +410,7 @@
 
   preloadImages().then(() => {
     // setTimeout(_ =>{
-      new Slide().closeShow();
+    new Slide();
     // },1000);
-    [...body.querySelectorAll('.swiper')].forEach(el => {
-      new DraggableSlider(el);
-    });
   });
 }

@@ -14,13 +14,14 @@ html(lang="en")
         div(class="sk-cube2 sk-cube")
         div(class="sk-cube4 sk-cube")
         div(class="sk-cube3 sk-cube")
-    a(href="#" id="btnSubmitYourSite_absolute" class="fi flaticon-add px-3 py-2 link" data-hover="!أعرض موقعك الأن")
+    a(href="#" id="btnSubmitYourSite_absolute" class="fi flaticon-add p-3 link" data-hover="!أعرض موقعك الأن")
     include assets/includes/mixins/_navbar&aside
     include assets/includes/mixins/_cursor
     
     main
       div(data-scroll)
         section#site_of_the_day.py-5
+          #split
           a(href="#" class="overlay link" data-hover="عرض")
           .dots
           #items.m-0.d-flex.align-items-center.justify-content-start
@@ -36,7 +37,7 @@ html(lang="en")
                 a(href="#" class="link name") محمود بخيت 
                 span من 
                   a(href="#" class="link"): strong مصر 
-                  span تقيم 
+                  span تقييم 
                     span.rating 7
             .box_noteSite
               ul.d-flex.flex-wrap.justify-content-around.justify-content-center

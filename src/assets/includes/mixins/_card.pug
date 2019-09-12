@@ -1,4 +1,4 @@
-mixin card(src, alt, srcAvatar, altAvatar, name,projects,form)
+mixin card(src, alt, srcAvatar, altAvatar, name,projects,form,date)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
@@ -13,17 +13,16 @@ mixin card(src, alt, srcAvatar, altAvatar, name,projects,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block px-3 py-1 mx-1")
+          a(href="#" class="d-inline-block px-3 py-2 mx-1"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block px-3 py-2 mx-1")
             i.flaticon-like.fi.mr-2
             span 35
-
     .caption_down
-      h4.title.my-2 وردبربس لشركة طبيبة
+      h4.title.my-3 وردبربس لشركة طبيبة
       h.date 3 فبراير 2018
       p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس 
 
-mixin cardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
+mixin cardWinners(src, alt, srcAvatar, altAvatar, name,projects,form,date)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
@@ -38,16 +37,15 @@ mixin cardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block px-3 py-1 mx-1")
+          a(href="#" class="d-inline-block px-3 py-2 mx-1"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block px-3 py-2 mx-1")
             i.flaticon-like.fi.mr-2
             span 35
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="شارك"): i.flaticon-share.fi
-
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="شارك"): i.flaticon-share.fi
     .caption_down
       .row
         .col-6
-          h4.title.my-2 وردبربس لشركة طبيبة
+          h4.title.my-3 وردبربس لشركة طبيبة
           h.date=date
         .col-6
           ul.p-0.d-flex.justify-content-end
@@ -72,16 +70,16 @@ mixin swiper(src, alt, srcAvatar, altAvatar, name,projects,form,date)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أعجبني")
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أعجبني")
             i.flaticon-like.fi.mr-2
             span 35
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="شارك"): i.flaticon-share.fi
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="شارك"): i.flaticon-share.fi
 
     .caption_down
       .row
         .col-6
-          h4.title.my-2 وردبربس لشركة طبيبة
+          h4.title.my-3 وردبربس لشركة طبيبة
           h.date=date
         .col-6
           ul.p-0.d-flex.justify-content-end
@@ -105,19 +103,18 @@ mixin swiperNominees(src, alt, srcAvatar, altAvatar, name,projects,form,date)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أعجبني")
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أعجبني")
             i.flaticon-like.fi.mr-2
             span 35
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="شارك"): i.flaticon-share.fi
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="شارك"): i.flaticon-share.fi
           a(href="#" class="d-inline-block vote px-4 py-2 px-lg-5 py-lg-3") !صوت الآن
-
     .caption_down
-      h4.title.my-2 وردبربس لشركة طبيبة
+      h4.title.my-3 وردبربس لشركة طبيبة
       h.date=date
 
 
-mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form)
+mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form,date)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
@@ -129,19 +126,17 @@ mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block link px-3 py-1 mx-1" data-hover="أعجبني")
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أضافه في مجموعتي"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="أعجبني")
             i.flaticon-like.fi.mr-2
             span 35
           a(href="#" class="d-inline-block vote px-5 py-3 mx-1") !صوت الآن
-
-
     .caption_down
       h4.title.my-1 وردبربس لشركة طبيبة
-      p.para.mt-2.mb-0 تطوير موقع باستخدام الوردبريس لشركة طبية في تركيا، الموقع متعدد اللغات
+      h.date=date
 
 
-mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form)
+mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form,date)
   .card.item_scroll.mb-5
     .mask_img.item__img-wrap.link
       img(class="item__img" src=src, alt=alt)
@@ -153,14 +148,10 @@ mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          
-
-          
-
     .caption_down
       .row
         .col-6
-          h4.title.my-2 وردبربس لشركة طبيبة
+          h4.title.my-3 وردبربس لشركة طبيبة
           h.date=date
         .col-6
           ul.p-0.d-flex.justify-content-end
@@ -185,8 +176,8 @@ mixin proCardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
           h5(class="m-0 form")=form
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
-          a(href="#" class="d-inline-block px-3 py-1 mx-1"): i.flaticon-app.fi
-          a(href="#" class="d-inline-block px-3 py-1 mx-1")
+          a(href="#" class="d-inline-block px-3 py-2 mx-1"): i.flaticon-app.fi
+          a(href="#" class="d-inline-block px-3 py-2 mx-1")
             i.flaticon-heart.fi.mr-2
             span 35
 

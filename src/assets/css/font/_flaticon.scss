@@ -55,6 +55,8 @@
     .flaticon-cancel:before { content: "\f10e"; }
     .flaticon-share:before { content: "\f10f"; }
     .flaticon-add:before { content: "\f110"; }
+    .flaticon-down-arrow:before { content: "\f111"; }
+    .flaticon-reload:before { content: "\f112"; }
 
         $font-Flaticon-alarm: "\f100";
         $font-Flaticon-settings: "\f101";
@@ -73,16 +75,5 @@
         $font-Flaticon-cancel: "\f10e";
         $font-Flaticon-share: "\f10f";
         $font-Flaticon-add: "\f110";
-
-    // $font-Flaticon-bell: "\f100";
-    // $font-Flaticon-like: "\f101";
-    // $font-Flaticon-gear: "\f102";
-    // $font-Flaticon-app: "\f103";
-    // $font-Flaticon-facebook: "\f104";
-    // $font-Flaticon-twitter: "\f105";
-    // $font-Flaticon-linkedin: "\f106";
-    // $font-Flaticon-instagram: "\f107";
-    // $font-Flaticon-honor-band-mention: "\f108";
-    // $font-Flaticon-coding1: "\f109";
-    // $font-Flaticon-coding: "\f10a";
-    // $font-Flaticon-medal: "\f10b";
+        $font-Flaticon-down-arrow: "\f111";
+        $font-Flaticon-reload: "\f112";

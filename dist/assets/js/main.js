@@ -53,6 +53,11 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   window.addEventListener('scroll', getPageYScroll);
+  window.addEventListener('scroll', function (e) {
+    _newArrowCheck(this, _this);
+
+    e.srcElement.documentElement.scrollTop > 500 ? body.querySelector("#btnSubmitYourSite_absolute").classList.add("active") : body.querySelector("#btnSubmitYourSite_absolute").classList.remove("active");
+  }.bind(void 0));
   window.addEventListener('resize', calcWinSize);
   body.querySelector("main").style.paddingTop = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
   body.querySelector("aside").style.top = "".concat(body.querySelector("#backdrop").offsetHeight, "px");
@@ -493,7 +498,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         _newArrowCheck(this, _this14);
 
         body.querySelector("aside").classList.toggle('active');
-        body.querySelector("#backdrop #hamburger > button").classList.toggle('active');
+        body.querySelector("#backdrop #hamburger > button").classList.toggle('tcon-transform');
       }.bind(this));
     };
 
@@ -579,9 +584,9 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
     _newArrowCheck(this, _this);
 
-    TweenMax.to(body.querySelector(".loading"), .5, {
+    TweenMax.to(body.querySelector(".loading"), 1, {
       opacity: 0,
-      ease: Back.easeIn
+      ease: Expo.easeInOut
     });
     setTimeout(function (_) {
       _newArrowCheck(this, _this18);
