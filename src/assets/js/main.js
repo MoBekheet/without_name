@@ -320,7 +320,13 @@ let isMobile = false;
   };
 
   preloadImages().then(() => {
-    body.querySelector(".loading").className= 'd-none';
+    TweenMax.to(body.querySelector(".loading"), .5,{
+      opacity: 0,
+      ease: Back.easeIn
+    })
+    setTimeout(_ =>{
+      body.querySelector(".loading").className= 'd-none';
+    },1000);
     getPageYScroll();
     new SmoothScroll();
     if(!isMobile){

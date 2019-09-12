@@ -79,10 +79,7 @@ section#site_of_the_day {
     }
   }
   
-  #close {
-    position: relative;
-    z-index: 5;
-  }
+  
 
   @supports (width: calc(100% + 66px)) {
     img {
@@ -159,7 +156,9 @@ section#site_of_the_day {
   }
 
   #info_down {
-    button {
+    button#close {
+      position: relative;
+      z-index: 5;
       border: 1px solid red;
       background: transparent;
       width: 40px;
@@ -169,6 +168,25 @@ section#site_of_the_day {
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
+      &::before{
+        content: '';
+        background: transparent;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        opacity: 0;
+        z-index: -1;
+        animation: animation-btn-close 3s ease-out infinite;
+        border: 1px solid red;
+        -webkit-animation: animation-btn-close 3s ease-out infinite;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+}
     }
   }
 }

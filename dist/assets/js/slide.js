@@ -68,7 +68,6 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
         this.observer.observe(item);
       }.bind(this));
-      this.displayItem();
       this.swiper();
       this.showCaption();
       this.noteSiteOpen();
@@ -537,12 +536,32 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     return DraggableSlider;
   }();
 
-  new Slide();
+  var preloadImages = function preloadImages() {
+    var _this13 = this;
 
-  _toConsumableArray(body.querySelectorAll('.swiper')).forEach(function (el) {
     _newArrowCheck(this, _this);
 
-    new DraggableSlider(el);
+    return new Promise(function (resolve, reject) {
+      _newArrowCheck(this, _this13);
+
+      imagesLoaded(document.querySelectorAll('.item__img'), {
+        background: true
+      }, resolve);
+    }.bind(this));
+  }.bind(void 0);
+
+  preloadImages().then(function () {
+    var _this14 = this;
+
+    _newArrowCheck(this, _this);
+
+    new Slide().closeShow();
+
+    _toConsumableArray(body.querySelectorAll('.swiper')).forEach(function (el) {
+      _newArrowCheck(this, _this14);
+
+      new DraggableSlider(el);
+    }.bind(this));
   }.bind(void 0));
 }
 //# sourceMappingURL=slide.js.map

@@ -575,9 +575,19 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   preloadImages().then(function () {
+    var _this18 = this;
+
     _newArrowCheck(this, _this);
 
-    body.querySelector(".loading").className = 'd-none';
+    TweenMax.to(body.querySelector(".loading"), .5, {
+      opacity: 0,
+      ease: Back.easeIn
+    });
+    setTimeout(function (_) {
+      _newArrowCheck(this, _this18);
+
+      body.querySelector(".loading").className = 'd-none';
+    }.bind(this), 1000);
     getPageYScroll();
     new SmoothScroll();
 

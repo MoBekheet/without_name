@@ -30,7 +30,7 @@
       this.items.forEach(item => {
         this.observer.observe(item);
       });
-      this.displayItem();
+      // this.displayItem();
       this.swiper();
       this.showCaption();
       this.noteSiteOpen();
@@ -387,8 +387,20 @@
       this.createDraggable()
     }
   }
-  new Slide();
-  [...body.querySelectorAll('.swiper')].forEach(el => {
-    new DraggableSlider(el);
-  })
+  
+
+  const preloadImages = () => {
+    return new Promise((resolve, reject) => {
+      imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);
+    });
+  };
+
+  preloadImages().then(() => {
+    // setTimeout(_ =>{
+      new Slide().closeShow();
+    // },1000);
+    [...body.querySelectorAll('.swiper')].forEach(el => {
+      new DraggableSlider(el);
+    });
+  });
 }

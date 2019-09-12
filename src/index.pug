@@ -14,6 +14,7 @@ html(lang="en")
         div(class="sk-cube2 sk-cube")
         div(class="sk-cube4 sk-cube")
         div(class="sk-cube3 sk-cube")
+    a(href="#" id="btnSubmitYourSite_absolute" class="fi flaticon-add px-3 py-2 link" data-hover="!أعرض موقعك الأن")
     include assets/includes/mixins/_navbar&aside
     include assets/includes/mixins/_cursor
     
@@ -46,6 +47,7 @@ html(lang="en")
                 li(class="dislink responsive", data-hover="متجاوب")
             #btnSubmitYourSite
               a(href="#" class="px-4 py-3 link") !أعرض موقعك الأن
+
           #info_down.d-flex.justify-content-center
             button(type="button" id="close" class="link mt-4" data-hover="خروج"): i.fi.flaticon-cancel
         
@@ -146,6 +148,7 @@ html(lang="en")
               
         include assets/includes/mixins/_footer
     
+
     //- SCRIPTS
     script(src="assets/js/plugins/progressbar.min.js")
     script(src="assets/js/plugins/Draggable.min.js")
