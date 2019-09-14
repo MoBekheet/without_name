@@ -1,4 +1,15 @@
+.followers{
+  ul{
+    img{
+      width: 20px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+}
 
+}
 .pagination{
   ul{
     li{
@@ -12,6 +23,21 @@
 }
 
 
+/* medium screen */
+
+@media (min-width:992px) and (max-width:1199px) {
+
+  .card{
+    .overlay{
+      .btns_top{
+        a{
+          padding: 10px 30px !important;
+        }
+      }
+    } 
+  } 
+
+}
 
 /* small screen */
 
@@ -20,11 +46,20 @@
   .filters{
     li{
       a{
-        font-size: 7px !important;
+        font-size: 15px !important;
       }
     }
   } 
-  
+  .card{
+    .overlay{
+      .btns_top{
+        a{
+          padding: 10px 20px !important;
+          font-size: 14px;
+        }
+      }
+    }
+  }
   footer{
     h1{
       font-size: 27px;
@@ -44,7 +79,15 @@
       }
     }
   } 
-  
+  .card{
+    .overlay{
+      .btns_top{
+        a{
+          padding: 5px 15px !important;
+        }
+      }
+    }
+  }
   footer{
     h1{
       font-size: 20px;
