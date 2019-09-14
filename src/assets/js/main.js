@@ -20,8 +20,8 @@
   const getPageYScroll = () => docScroll = window.pageYOffset || document.documentElement.scrollTop;
   window.addEventListener('scroll', getPageYScroll);
 
-  window.addEventListener('scroll', e =>{
-      e.srcElement.documentElement.scrollTop > 500 
+  window.addEventListener('scroll', e => {
+    e.srcElement.documentElement.scrollTop > 500
       ? body.querySelector("#btnSubmitYourSite_absolute").classList.add("active")
       : body.querySelector("#btnSubmitYourSite_absolute").classList.remove("active");
   });
@@ -29,6 +29,13 @@
 
   body.querySelector("main").style.paddingTop = `${body.querySelector("#backdrop").offsetHeight}px`;
   body.querySelector("aside").style.top = `${body.querySelector("#backdrop").offsetHeight}px`;
+
+  (_ => {
+    body.querySelector("#backdrop #hamburger > button").addEventListener("click", _ => {
+      body.querySelector("aside").classList.toggle('active');
+      body.querySelector("#backdrop #hamburger > button").classList.toggle('tcon-transform');
+    });
+  })();
 
   const getMousePos = e => {
     let posx = e.clientX;
@@ -274,12 +281,13 @@
           setValue: () => docScroll
         }
       };
+      this.DOM.main.classList.add("isVisible");
       this.setSize();
       this.update();
       // this.style();
-      this.hamburger();
       this.initEvents();
       requestAnimationFrame(() => this.render());
+
     }
     update() {
       for (const key in this.renderedStyles) {
@@ -293,19 +301,13 @@
     setSize() {
       body.style.height = `${this.DOM.scrollable.scrollHeight + this.DOM.navBar}px`;
     }
-    hamburger() {
-      body.querySelector("#backdrop #hamburger > button").addEventListener("click", _ => {
-        body.querySelector("aside").classList.toggle('active');
-        body.querySelector("#backdrop #hamburger > button").classList.toggle('tcon-transform');
-      });
 
-    }
-    style() {
-      this.DOM.main.style.position = 'fixed';
-      this.DOM.main.style.width = this.DOM.main.style.height = '100%';
-      this.DOM.main.style.top = this.DOM.main.style.left = 0;
-      this.DOM.main.style.overflow = 'hidden';
-    }
+    // style() {
+    //   this.DOM.main.style.position = 'fixed';
+    //   this.DOM.main.style.width = this.DOM.main.style.height = '100%';
+    //   this.DOM.main.style.top = this.DOM.main.style.left = 0;
+    //   this.DOM.main.style.overflow = 'hidden';
+    // }
     initEvents() {
       window.addEventListener('resize', () => this.setSize());
     }
@@ -319,11 +321,41 @@
         if (item.isVisible) {
           item.render();
         }
+
       }
       requestAnimationFrame(() => this.render());
     }
+
   }
 
+  class Login {
+    constructor(el) {
+      this.DOM = { el: el };
+      this.DOM.selected = [...this.DOM.el.querySelectorAll(".selected")];
+      this.DOM.forms = [...this.DOM.el.querySelectorAll(".form")];
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0);
+      });
+      this.observer.observe(this.DOM.el);
+
+        this.DOM.selected.forEach(i =>{
+          i.addEventListener("click", e =>{
+              let element = this.DOM.forms;
+              element.forEach(el => {
+                
+              })
+              e.target.classList.add("none");
+
+
+
+            
+          });
+        })
+    }
+  }
+  [body.querySelector('#login')].forEach(el => {
+    new Login(el);
+  });
   const preloadImages = () => {
     return new Promise((resolve, reject) => {
       imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);
@@ -340,9 +372,9 @@
       body.querySelector(".loading").className = 'd-none';
     }, 1000);
     getPageYScroll();
-    new SmoothScroll();
     if (!isMobile) {
-      new Cursor()
+      new SmoothScroll();
+      new Cursor();
     } else {
       body.querySelector("#cursor").classList = "d-none";
       body.querySelector("#dot").classList = "d-none";

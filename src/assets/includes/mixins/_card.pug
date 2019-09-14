@@ -43,17 +43,16 @@ mixin cardWinners(src, alt, srcAvatar, altAvatar, name,projects,form,date)
             span 35
           a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="شارك"): i.flaticon-share.fi
     .caption_down
-      .row
-        .col-6
+      .row.no-gutters
+        .col-7
           h4.title.my-3 وردبربس لشركة طبيبة
-          h.date=date
-        .col-6
+          h5.date=date
+        .col-5
           ul.p-0.d-flex.justify-content-end
-            li: i(data-hover="شرفية").dislink.flaticon-honor-band-mention.fi.mx-2
-            li: i(data-hover="فائز اليوم").dislink.flaticon-medal.fi.mx-2
-            li: i(data-hover="موبايل الأسبوع").dislink.flaticon-coding1.fi.mx-2
-            li: i(data-hover="موقع مطور").dislink.flaticon-coding.fi.mx-2
-
+            li: i(data-hover="شرفية").dislink.flaticon-honor-band-mention.fi.mx-sm-2.mx-1
+            li: i(data-hover="فائز اليوم").dislink.flaticon-medal.fi.mx-sm-2.mx-1
+            li: i(data-hover="موبايل الأسبوع").dislink.flaticon-coding1.fi.mx-sm-2.mx-1
+            li: i(data-hover="موقع مطور").dislink.flaticon-coding.fi.mx-sm-2.mx-1
 
 mixin swiper(src, alt, srcAvatar, altAvatar, name,projects,form,date)
   .card.item.item_scroll.swiper-slide
@@ -77,16 +76,16 @@ mixin swiper(src, alt, srcAvatar, altAvatar, name,projects,form,date)
           a(href="#" class="d-inline-block link px-3 py-2 mx-1" data-hover="شارك"): i.flaticon-share.fi
 
     .caption_down
-      .row
-        .col-6
+      .row.no-gutters
+        .col-7
           h4.title.my-3 وردبربس لشركة طبيبة
-          h.date=date
-        .col-6
+          h5.date=date
+        .col-5
           ul.p-0.d-flex.justify-content-end
-            li: i(data-hover="شرفية").dislink.flaticon-honor-band-mention.fi.mx-2
-            li: i(data-hover="فائز اليوم").dislink.flaticon-medal.fi.mx-2
-            li: i(data-hover="موبايل الأسبوع").dislink.flaticon-coding1.fi.mx-2
-            li: i(data-hover="موقع مطور").dislink.flaticon-coding.fi.mx-2
+            li: i(data-hover="شرفية").dislink.flaticon-honor-band-mention.fi.mx-sm-2.mx-1
+            li: i(data-hover="فائز اليوم").dislink.flaticon-medal.fi.mx-sm-2.mx-1
+            li: i(data-hover="موبايل الأسبوع").dislink.flaticon-coding1.fi.mx-sm-2.mx-1
+            li: i(data-hover="موقع مطور").dislink.flaticon-coding.fi.mx-sm-2.mx-1
 
 mixin swiperNominees(src, alt, srcAvatar, altAvatar, name,projects,form,date)
   .card.item.item_scroll.swiper-slide
@@ -111,8 +110,7 @@ mixin swiperNominees(src, alt, srcAvatar, altAvatar, name,projects,form,date)
           a(href="#" class="d-inline-block vote px-4 py-2 px-lg-5 py-lg-3") !صوت الآن
     .caption_down
       h4.title.my-3 وردبربس لشركة طبيبة
-      h.date=date
-
+      h5.date=date
 
 mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form,date)
   .card.item_scroll.mb-5
@@ -133,8 +131,7 @@ mixin cardNominees(src, alt, srcAvatar, altAvatar, name,form,date)
           a(href="#" class="d-inline-block vote px-5 py-3 mx-1") !صوت الآن
     .caption_down
       h4.title.my-1 وردبربس لشركة طبيبة
-      h.date=date
-
+      h5.date=date
 
 mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form,date)
   .card.item_scroll.mb-5
@@ -149,17 +146,16 @@ mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form,date)
       .overlay.p-3
         .btns_top.d-flex.justify-content-end
     .caption_down
-      .row
-        .col-6
+      .row.no-gutters
+        .col-7
           h4.title.my-3 وردبربس لشركة طبيبة
-          h.date=date
-        .col-6
+          h5.date=date
+        .col-5
           ul.p-0.d-flex.justify-content-end
-            li: i(data-hover="التصميم",).dislink.flaticon-honor-band-mention.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-medal.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-coding1.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-coding.fi.mx-2
-        
+            li: i(data-hover="التصميم",).dislink.flaticon-honor-band-mention.fi.mx-sm-2.mx-1
+            li: i(data-hover="التصميم",).dislink.flaticon-medal.fi.mx-sm-2.mx-1
+            li: i(data-hover="التصميم",).dislink.flaticon-coding1.fi.mx-sm-2.mx-1
+            li: i(data-hover="التصميم",).dislink.flaticon-coding.fi.mx-sm-2.mx-1
 
 mixin proCardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
   .card.item_scroll.mb-5

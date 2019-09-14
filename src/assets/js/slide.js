@@ -409,8 +409,6 @@
   };
 
   preloadImages().then(() => {
-    // setTimeout(_ =>{
     new Slide();
-    // },1000);
   });
 }
