@@ -4,17 +4,21 @@ section#gird .card .overlay{
   background:rgb(0, 0, 0,.5)
 }
 section#gird{
-  margin-top:600px
+  margin-top:450px;
+  margin-bottom: 100px
 }
 section#gird .card .caption_down p{
   padding:0 15px;
-  word-break: unset
+  word-break: unset;
+  line-height:1.5
 }
+.card .caption{padding:10px}
 .mb-1, .my-1{
   padding:15px 15px 0px
 }
 .title a{
-  color:#222
+  color:#222;
+  font-weight: 900
 }
 .data-c{
   padding-right:15px
@@ -98,11 +102,11 @@ color:#eaeaea
 }
 .header__wrap {
 	position:absolute;
-	top:50%;
+	top:20%;
 	left:50%;
 	transform:translate(-50%, -50%);
 	text-align:center;
-	padding:850px 0 200px;
+	padding:850px 0 00px;
 	width:100%;
 	-webkit-transform:translate(-50%, -50%);
 	-moz-transform:translate(-50%, -50%);
@@ -215,12 +219,16 @@ width:50%;
   background: #222222;
   color:#fff;
   margin:auto;
-  display:block
+  display:block;
+  -webkit-transition:all .4s ease;
+  -moz-transition:all .4s ease;
+  -ms-transition:all .4s ease;
+  -o-transition:all .4s ease;
 }
 
 #award:hover {
   color: white;
-  background:#222
+  background:#2d2c2c
 }
 #visit {
   border-radius: 25px;
@@ -234,4 +242,23 @@ width:50%;
 #visit:hover {
   color: white;
   background:#222
+}
+h1{
+  color:#222
+}
+/***start media Query******/
+@media (max-width: 768px){
+  section#gird .card .caption_down p{
+    font-size:14px;
+    line-height:20px
+  }
+  .data-c{
+    font-size:12px
+  }
+  .title a{
+    font-size:15px
+  }
+  h1.py-2{
+    font-size:18px
+  }
 }
