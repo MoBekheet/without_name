@@ -37,7 +37,7 @@ ul {
   position: fixed;
   right: 60px;
   bottom: -100%;
-  z-index: 799;
+  z-index: 189;
   opacity: 0;
   color: $white;
   background-color: $main-color-hover;
@@ -52,7 +52,8 @@ ul {
   -moz-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
   -ms-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
   -o-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  &:after{
+
+  &:after {
     content: '';
     background: transparent;
     border-radius: 60px;
@@ -164,7 +165,7 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999999;
+  z-index: 300;
   background-color: #fff;
 
   .sk-folding-cube {
@@ -281,27 +282,26 @@ ul {
   }
 }
 
-main {
+main.isVisible {
   position: fixed;
   height: 100%;
   width: 100%;
   left: 0px;
-  // top: 0px;
   overflow: hidden;
 }
 
 #cursor {
   position: fixed;
   mix-blend-mode: difference;
-  z-index: 1000;
+  z-index: 210;
 
   span#title {
-    z-index: 999;
+    z-index: 210;
     pointer-events: none;
     position: absolute;
-    mix-blend-mode: difference;
+    // mix-blend-mode: difference;
     top: 3px;
-    opacity: 0;
+    opacity: 1;
     color: #fff;
     white-space: nowrap;
     line-height: 1;
@@ -311,7 +311,7 @@ main {
   }
 
   #circle {
-    z-index: 9999;
+    z-index: 210;
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -345,7 +345,7 @@ main {
 #dot {
   position: fixed;
   top: 0;
-  z-index: 998;
+  z-index: 210;
   left: 0;
   width: 5px;
   height: 5px;
@@ -394,7 +394,11 @@ main {
     width: 100%;
   }
 
-  margin: 10px 1.5rem;
+  @include media-breakpoint-up(sm) {
+    margin: 10px 1.5rem;
+  }
+
+  margin: 10px 10px;
 
   .mask_img {
     width: 300px;
@@ -416,7 +420,7 @@ aside {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   color: white;
-  z-index: 888;
+  z-index: 208;
 
   @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -456,7 +460,7 @@ nav#backdrop {
   left: 0;
   width: 100%;
   height: 80px;
-  z-index: 998;
+  z-index: 200;
   // border-bottom: 1px solid rgba(255, 255, 255, 0.38);
 
   .wrapper {
@@ -491,7 +495,7 @@ nav#backdrop {
       .box-right {
         position: relative;
 
-        #login {
+        #login_btn {
           position: absolute;
           right: 100%;
           white-space: nowrap;
@@ -502,7 +506,7 @@ nav#backdrop {
 
       #logo {
         a {
-          color: #2a2a2a;
+          color: $main-color;
         }
       }
 
@@ -610,13 +614,11 @@ nav#backdrop {
           }
         }
       }
-
     }
   }
 }
 
 .card {
-  position: relative;
 
   img {
     width: 100%;
@@ -790,7 +792,7 @@ nav#backdrop {
 
       ul.dropdown-menu {
         background-color: #fff;
-        z-index: 889;
+        z-index: 199;
         position: absolute;
         left: 0;
         top: 100%;
@@ -838,6 +840,28 @@ footer {
   direction: rtl;
   background: url("../images/Shape.svg") no-repeat center center;
 
+  h1 {
+    font-size: 14px;
+    color: $main-color;
+    @include media-breakpoint-up(md) {
+      font-size: 25px;
+    }
+  }
+
+  .icons {
+    text-align: center;
+
+    i {
+      font-size: 25px;
+      padding: 0 10px;
+      color: #252525;
+
+      &:hover {
+        color: $main-color-hover;
+      }
+    }
+  }
+
   .logo {
     direction: ltr;
   }
@@ -848,17 +872,261 @@ footer {
     background-color: #cccccc;
   }
 
-  i {
-    font-size: 25px;
-    padding: 0 10px;
-    color: #252525;
-
-    &:hover {
-      color: $main-color-hover;
+  ul {
+    li {
+      a {
+        &:hover{
+          text-decoration: underline;
+        }
+      }
     }
   }
 
   p {
     text-align: center;
+  }
+}
+
+#login {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(15, 15, 15, 0.84);
+  z-index: 202;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+
+  * {
+    font-family: $main-font-family;
+  }
+
+  #box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 203;
+    direction: rtl;
+
+    @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    #modal {
+      width: 100%;
+      height: 100%;
+      padding: 30px 40px 50px;
+      background-color: $light;
+      overflow-y: auto;
+
+      @include media-breakpoint-up(md) {
+        min-width: 600px;
+        width: auto;
+        height: auto;
+      }
+
+      .closeBtn {
+        font-size: 20px;
+        color: $main-color;
+      }
+
+      .hide-it {
+        display: none;
+      }
+
+      .form {
+        max-width: 430px;
+        @include media-breakpoint-up(md) {}
+&.none{
+  display: none;
+}
+        .head {
+          font-size: 14px;
+
+          h2 {
+            font-weight: 700;
+          }
+
+          span>a {
+            color: $main-color-hover;
+            transition: color 0.2s ease-in-out;
+            -webkit-transition: color 0.2s ease-in-out;
+            -moz-transition: color 0.2s ease-in-out;
+            -ms-transition: color 0.2s ease-in-out;
+            -o-transition: color 0.2s ease-in-out;
+
+            &:hover {
+              color: $main-color;
+            }
+          }
+        }
+
+
+        input {
+          margin-bottom: 1em;
+          border: 1px solid $main-color;
+          background-color: $light;
+          padding: 0 1em;
+          height: 60px;
+          width: 100%;
+          font-family: $main-font-family;
+          display: inline-block;
+          color: $main-color;
+
+          &[type="checkbox"] {
+            height: auto;
+            width: auto;
+          }
+        }
+
+
+        .box {
+          margin: 1em 0;
+
+          label {
+            display: inline-block;
+            position: relative;
+
+            >input[type="checkbox"] {
+              opacity: 0;
+            }
+
+            .check {
+              position: absolute;
+              right: 0;
+              top: 4px;
+              width: 15px;
+              height: 15px;
+              display: block;
+              background: $main-color;
+              border-radius: 2px;
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                right: 2px;
+                bottom: 2px;
+                z-index: 11;
+                opacity: 0;
+                border-radius: 2px;
+                transition: all 0.3s ease-in-out;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+              }
+            }
+
+            input[type="checkbox"]:checked~.check::before {
+              background: $main-color-hover;
+              opacity: 1;
+            }
+          }
+        }
+
+        button[type="submit"] {
+          width: 100%;
+          height: 60px;
+          border: 1px solid $main-color;
+          background: $light;
+          color: $main-color;
+          font-weight: 700;
+          transition: all 0.2s ease-in-out;
+          -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -ms-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+
+          &:hover {
+            border: 1px solid $main-color-hover;
+            color: $main-color-hover;
+          }
+        }
+
+        .social {
+          width: 100%;
+          height: 45px;
+
+          a {
+            width: 100%;
+            height: 100%;
+            background: #4267b2;
+            color: #fff;
+            font-weight: 600;
+            display: block;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .login {
+        .forget {
+          text-align: center;
+
+          a {
+            color: $gray-700;
+            font-weight: 600;
+            font-size: 14px;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .password {
+        .social {
+          width: 100%;
+          display: inline-block;
+          border: none;
+          outline: none;
+        }
+
+        button {
+          background: $main-color;
+          color: #000;
+          font-weight: bold;
+          margin-bottom: 0;
+          cursor: pointer;
+
+          &:hover {
+            opacity: .8;
+          }
+        }
+
+        .back {
+          margin: 30px 0;
+
+          a {
+            color: $white;
+            font-size: 16px;
+            float: left;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .selected {
+        margin-bottom: 10px;
+        color: $main-color;
+        font-weight: 700;
+      }
+
+      .signUp,
+      .login {
+        >h2 {
+          margin: 1em 0;
+        }
+      }
+    }
+
   }
 }

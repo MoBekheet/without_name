@@ -1,0 +1,83 @@
+#login.d-none
+  #box.d-flex.justify-content-center.align-items-center
+    #modal.my-4
+      a(href="#!" class="closeBtn link")
+        i(class="flaticon-cancel fi")
+        
+      div(class="form mx-auto my-4 signUp none")
+        div(class="d-flex justify-content-end align-content-center flex-wrap")
+          h2 Register with
+          span Are you a member? 
+            a(href="#" class="selected link" data-class="login") Login now
+        
+        div(class="d-flex justify-content-between align-content-center")
+          div(class="social")
+            a(href="#!" class="d-flex justify-content-center align-items-center" id="login-Fb")
+              i(class="fab fa-facebook-f")
+              span Facebook
+          div(class="social")
+            a(href="#!" class="d-flex justify-content-center align-items-center" id="login-twitter")
+              i(class="fab fa-twitter")
+              span Twitter
+          div(class="social")
+            a(href="#!" class="d-flex justify-content-center align-items-center" id="login-google")
+              i(class="fab fa-google")
+              span Google
+        div(class="status")
+        h2 Or with your E-mail
+        form
+          input(type="text" name="text" placeholder="Username")
+          input(type="email" name="text" placeholder="E-mail")
+          input(type="password" name="password" placeholder="Password")
+          input(type="password" name="password" placeholder="Repeat Password")
+          div(class="form-group")
+            input(type="checkbox" name="c")
+            span(class="check") I accept the 
+            strong
+              a(href="#!" target="_blank") الأحكام والشروط
+            strong
+              a(href="#!" target="_blank") سياسة خاصة
+          button(class="create-your-account link" type="submit") أنشئ حسابك
+      
+      div(class="form mx-auto my-4 login")
+        div(class="d-flex align-content-center justify-content-between mb-4 head")
+          h3.m-0 تسجيل الدخول للمتابعة
+          span لست عضوا حتى الآن؟ 
+            a(href="#" class="selected link" data-class="signUp") سجل الان
+        
+        form
+          input(class="link" type="text" name="text" placeholder="البريد الإلكتروني أو اسم المستخدم")
+          input(class="link" type="password" name="password" placeholder="كلمه السر")
+          .box
+            label.link
+              input(type="checkbox" name="remember_me")
+              span(class="check") 
+              .
+                تذكرني
+        
+          button(class="loginNow link" type="submit") تسجيل الدخول الآن!
+        
+        div(class="forget mt-3 mb-4" data-class="password")
+          a(href="#" class="link") نسيت رقمك السري؟
+        
+        h4 أو تسجيل الدخول مع
+
+        div(class="social")
+          a(href="#!" class="link d-flex justify-content-center align-items-center" id="login-Fb")
+            i(class="flaticon-facebook fi ml-1")
+            span متابعة بحساب فيسبوك
+        div(class="status")
+      
+      div(class="form mx-auto my-4 password none")
+        div(class="d-flex justify-content-end align-content-center flex-wrap")
+          h2 Forgot your password
+          span Not a member yet? 
+            a(href="#" class="span selected link" data-class="signup") SignUp
+        
+        p Enter your username or email address and we will send you a link to reset your password.
+        form 
+          input(type="text" name="text" placeholder="Email or Username")
+          button(class="forgot-password link" type="submit") FORGOT PASSWORD
+        
+        div(class="back span" data-class="login")
+          a(href="#") Back
