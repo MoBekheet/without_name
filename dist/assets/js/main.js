@@ -559,58 +559,13 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     return SmoothScroll;
   }();
 
-  var Login = function Login(el) {
-    var _this17 = this;
-
-    this.DOM = {
-      el: el
-    };
-    this.DOM.selected = _toConsumableArray(this.DOM.el.querySelectorAll(".selected"));
-    this.DOM.forms = _toConsumableArray(this.DOM.el.querySelectorAll(".form"));
-    this.observer = new IntersectionObserver(function (entries) {
-      var _this18 = this;
-
-      _newArrowCheck(this, _this17);
-
-      entries.forEach(function (entry) {
-        _newArrowCheck(this, _this18);
-
-        return this.isVisible = entry.intersectionRatio > 0;
-      }.bind(this));
-    }.bind(this));
-    this.observer.observe(this.DOM.el);
-    this.DOM.selected.forEach(function (i) {
-      var _this19 = this;
-
-      _newArrowCheck(this, _this17);
-
-      i.addEventListener("click", function (e) {
-        var _this20 = this;
-
-        _newArrowCheck(this, _this19);
-
-        var element = this.DOM.forms;
-        element.forEach(function (el) {
-          _newArrowCheck(this, _this20);
-        }.bind(this));
-        e.target.classList.add("none");
-      }.bind(this));
-    }.bind(this));
-  };
-
-  [body.querySelector('#login')].forEach(function (el) {
-    _newArrowCheck(this, _this);
-
-    new Login(el);
-  }.bind(void 0));
-
   var preloadImages = function preloadImages() {
-    var _this21 = this;
+    var _this17 = this;
 
     _newArrowCheck(this, _this);
 
     return new Promise(function (resolve, reject) {
-      _newArrowCheck(this, _this21);
+      _newArrowCheck(this, _this17);
 
       imagesLoaded(document.querySelectorAll('.item__img'), {
         background: true
@@ -619,7 +574,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   preloadImages().then(function () {
-    var _this22 = this;
+    var _this18 = this;
 
     _newArrowCheck(this, _this);
 
@@ -628,7 +583,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       ease: Expo.easeInOut
     });
     setTimeout(function (_) {
-      _newArrowCheck(this, _this22);
+      _newArrowCheck(this, _this18);
 
       body.querySelector(".loading").className = 'd-none';
     }.bind(this), 1000);

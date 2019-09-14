@@ -328,34 +328,42 @@
 
   }
 
-  class Login {
-    constructor(el) {
-      this.DOM = { el: el };
-      this.DOM.selected = [...this.DOM.el.querySelectorAll(".selected")];
-      this.DOM.forms = [...this.DOM.el.querySelectorAll(".form")];
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0);
-      });
-      this.observer.observe(this.DOM.el);
+//   class Login {
+//     constructor(el) {
+//       this.DOM = { el: el };
+//       this.DOM.selected = [...this.DOM.el.querySelectorAll(".selected")];
+//       this.DOM.forms = [...this.DOM.el.querySelectorAll(".form")];
+//       this.observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0);
+//       });
+//       this.observer.observe(this.DOM.el);
 
-        this.DOM.selected.forEach(i =>{
-          i.addEventListener("click", e =>{
-              let element = this.DOM.forms;
-              element.forEach(el => {
+//         this.DOM.selected.forEach(i =>{
+//           i.addEventListener("click", e =>{
+//               let element = this.DOM.forms;
+//               let clas= `.${e.target.getAttribute("data-class")}`; 
+
+//               element.forEach(el => {
+//                 // if(el.classList.contains('none')){
+//                 //   console.log("go");
+//                 // }
+//               el.classList.add("none");
+//                 // el.querySelector(clas).toggle(".none")
+// console.log(clas);
                 
-              })
-              e.target.classList.add("none");
-
-
-
+//               })
+              
+//               Array.prototype.filter.call(el.parentNode.children, function(child){
+//                 return child !== el;
+//               });
             
-          });
-        })
-    }
-  }
-  [body.querySelector('#login')].forEach(el => {
-    new Login(el);
-  });
+//           });
+//         })
+//     }
+//   }
+//   [body.querySelector('#login')].forEach(el => {
+//     new Login(el);
+//   });
   const preloadImages = () => {
     return new Promise((resolve, reject) => {
       imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);
