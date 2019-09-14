@@ -152,14 +152,31 @@ mixin cardCollection(src, alt, srcAvatar, altAvatar, name,form,date)
       .row
         .col-6
           h4.title.my-3 وردبربس لشركة طبيبة
-          h.date=date
+          
         .col-6
           ul.p-0.d-flex.justify-content-end
-            li: i(data-hover="التصميم",).dislink.flaticon-honor-band-mention.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-medal.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-coding1.fi.mx-2
-            li: i(data-hover="التصميم",).dislink.flaticon-coding.fi.mx-2
-        
+            li: i(data-hover="شرفية",).dislink.flaticon-honor-band-mention.fi.mx-2
+            li: i(data-hover="فائز اليوم",).dislink.flaticon-medal.fi.mx-2
+            li: i(data-hover="موبايل الأسبوع",).dislink.flaticon-coding1.fi.mx-2
+            li: i(data-hover="موقع مطور",).dislink.flaticon-coding.fi.mx-2
+      .followers
+        .row
+          .col-6
+            h.date=date
+          
+          .col-6
+            ul.m-0.p-0
+              li
+                a.link(href="#"): img.mr-1(src="assets/images/vv.jpg", alt="متابع")
+              li
+                a.link(href="#"): img.mr-1(src="assets/images/vv.jpg", alt="متابع")
+              li
+                a.link(href="#"): img.mr-1(src="assets/images/vv.jpg", alt="متابع")
+              li
+                a.link(href="#"): img.mr-0(src="assets/images/vv.jpg", alt="متابع")
+              li
+                a.link(href="#"): i(data-hover="عرض المزيد",).dislink ICON
+
 
 mixin proCardWinners(src, alt, srcAvatar, altAvatar, name,projects,form)
   .card.item_scroll.mb-5
