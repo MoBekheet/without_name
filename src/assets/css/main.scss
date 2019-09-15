@@ -37,9 +37,11 @@ ul {
   position: fixed;
   bottom: -100%;
   right: 30px;
+
   @include media-breakpoint-up(md) {
     right: 60px;
   }
+
   z-index: 189;
   opacity: 0;
   color: $white;
@@ -50,11 +52,21 @@ ul {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  -webkit-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  -moz-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  -ms-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  -o-transition: border 0.7s ease-in-out, bottom 0.7s ease-in-out, opacity 0.7s ease-in-out;
+  transition: border 0.7s ease-in-out,
+  bottom 0.7s ease-in-out,
+  opacity 0.7s ease-in-out;
+  -webkit-transition: border 0.7s ease-in-out,
+  bottom 0.7s ease-in-out,
+  opacity 0.7s ease-in-out;
+  -moz-transition: border 0.7s ease-in-out,
+  bottom 0.7s ease-in-out,
+  opacity 0.7s ease-in-out;
+  -ms-transition: border 0.7s ease-in-out,
+  bottom 0.7s ease-in-out,
+  opacity 0.7s ease-in-out;
+  -o-transition: border 0.7s ease-in-out,
+  bottom 0.7s ease-in-out,
+  opacity 0.7s ease-in-out;
 
   &:after {
     content: '';
@@ -74,6 +86,7 @@ ul {
 
   &.active {
     bottom: 30px;
+
     @include media-breakpoint-up(md) {
       bottom: 60px;
     }
@@ -647,19 +660,28 @@ nav#backdrop {
     z-index: 3;
 
     .avatar {
-      width: 55px;
-      height: 55px;
+      width: 40px;
+      height: 40px;
       overflow: hidden;
       border-radius: 50%;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      border: 5px dotted #fff;
+      // border: 3px dotted #fff;
+      box-shadow: 7px 7px 15px 0px rgba(0, 0, 0, 0.3);
     }
 
     .box {
       line-height: 1.5;
+
+      h4 {
+        font-size: 14px;
+      }
+
+      h5 {
+        font-size: 12px;
+      }
     }
 
     p {
@@ -674,6 +696,13 @@ nav#backdrop {
 
   .caption_down {
     direction: rtl;
+
+    .title {
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .date {}
 
     ul {
       li {
@@ -756,6 +785,63 @@ nav#backdrop {
   }
 }
 
+.followers {
+  &.position {
+    position: relative;
+    z-index: 2;
+  }
+
+  ul {
+    li {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      box-shadow: 7px 7px 15px 0px rgba(0, 0, 0, 0.3);
+
+      &.user_overflow {
+        overflow: hidden;
+      }
+
+      a {
+        img {
+          width: 100% !important;
+        }
+      }
+
+      &.more_users {
+        background-color: $light;
+
+        a {
+          height: 100%;
+          position: relative;
+
+          span {
+            position: absolute;
+            top: 68%;
+            left: 0px;
+            border-radius: 20px;
+            padding: 1px 4px;
+            font-size: 11px;
+            color: $main-color;
+            background: $light;
+            box-shadow: 3px -2px 5px rgba(0, 0, 0, 0.41);
+          }
+
+          i {
+            color: $main-color;
+            font-size: 18px;
+            width: 1.1em;
+          }
+        }
+
+      }
+    }
+  }
+}
 
 .vote {
   position: absolute;
@@ -847,7 +933,7 @@ footer {
   direction: rtl;
   background: url("../images/Shape.svg") no-repeat center center;
 
-  h1 {
+  h2 {
     font-size: 14px;
     color: $main-color;
 

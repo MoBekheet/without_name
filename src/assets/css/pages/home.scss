@@ -7,7 +7,8 @@ section#site_of_the_day {
   position: relative;
   height: 700px;
   overflow: hidden;
-  #split{
+
+  #split {
     width: 50%;
     height: 100%;
     position: absolute;
@@ -15,6 +16,7 @@ section#site_of_the_day {
     top: 0;
     background-color: $main-color;
   }
+
   a.overlay {
     position: absolute;
     top: 0;
@@ -28,26 +30,26 @@ section#site_of_the_day {
 
   .box_noteSite {
     margin-bottom: 60px;
-  
+
     ul {
       li {
         margin: 0 15px;
         width: 50px;
         height: 50px;
         font-size: 1rem;
-  
+
         @media(min-width: 576px) {
           font-size: 1.5rem;
           width: 70px;
           height: 70px;
         }
-  
+
         @media(min-width: 768px) {
           font-size: 2rem;
           width: 100px;
           height: 100px;
         }
-  
+
         position: relative;
         z-index: 9;
         background: #ffffff;
@@ -57,13 +59,14 @@ section#site_of_the_day {
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
         box-shadow: 2px 20px 20px 0px rgba(56, 56, 56, 0.49);
-  
+
         $items: ("design""التصميم",
-        "usability""سهولة الاستخدام",
-        "creativity""الإبداع",
-        "content""المحتوى",
-        "responsive""متجاوب"
-      );
+          "usability""سهولة الاستخدام",
+          "creativity""الإبداع",
+          "content""المحتوى",
+          "responsive""متجاوب"
+        );
+
         @each $class,
         $content in $items {
           &.#{$class}::after {
@@ -86,8 +89,33 @@ section#site_of_the_day {
       }
     }
   }
-  
-  
+
+
+  .followers {
+    ul {
+      li {
+        width: 35px;
+        height: 35px;
+
+        &.more_users {
+          a {
+            span {
+              top: 68%;
+              left: 0px;
+              padding: 2px 5px;
+              font-size: 12px;
+            }
+
+            i {
+              font-size: 24px;
+              width: .8em;
+            }
+          }
+
+        }
+      }
+    }
+  }
 
   @supports (width: calc(100% + 66px)) {
     img {
@@ -122,13 +150,16 @@ section#site_of_the_day {
         z-index: 600;
         color: #fff;
         font-weight: 400;
+
         a:hover {
           color: $main-color-hover;
         }
-        .name{
+
+        .name {
           color: $main-color-hover;
         }
-        .rating{
+
+        .rating {
           font-size: 23px;
           line-height: 1;
         }
@@ -177,7 +208,8 @@ section#site_of_the_day {
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      &::before{
+
+      &::before {
         content: '';
         background: transparent;
         border-radius: 50%;
@@ -195,7 +227,7 @@ section#site_of_the_day {
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
-}
+      }
     }
   }
 }

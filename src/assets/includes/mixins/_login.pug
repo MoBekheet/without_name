@@ -1,14 +1,14 @@
 #login.none
   #box.d-flex.justify-content-center.align-items-center
-    #modal.my-4
+    #modal.my-md-4.my-0
       a(href="#!" class="closeBtn link")
         i(class="flaticon-cancel fi")
         
       div(class="form mx-auto my-4 signUp", style="display: none;")
-        div(class="d-flex align-content-center justify-content-between mb-4 head")
-          h3.m-0 سجل مع
+        div(class="d-flex align-content-center justify-content-between mb-4 head flex-wrap")
           span هل أنت عضو؟ 
             a(href="#" class="selected link" data-class="login") تسجيل الدخول الآن
+          //- h3.m-md-0.my-2 سجل مع
         
         div(class="social")
           a(href="#!" class="link d-flex justify-content-center align-items-center" id="login-Fb")
@@ -34,11 +34,10 @@
           button(class="create-your-account link" type="submit") أنشئ حسابك
       
       div(class="form mx-auto my-4 login")
-        div(class="d-flex align-content-center justify-content-between mb-4 head")
-          h3.m-0 تسجيل الدخول للمتابعة
+        div(class="d-flex align-content-center justify-content-between mb-4 head flex-wrap")
           span لست عضوا حتى الآن؟ 
             a(href="#" class="selected link" data-class="signUp") سجل الان
-        
+          h3.m-md-0.my-2 تسجيل الدخول للمتابعة
         form
           input(class="link" type="text" name="text" placeholder="البريد الإلكتروني أو اسم المستخدم")
           input(class="link" type="password" name="password" placeholder="كلمه السر")
