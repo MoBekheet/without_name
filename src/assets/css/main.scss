@@ -507,8 +507,19 @@ nav#backdrop {
       z-index: 2;
 
       #search {
+        position: relative;
         svg {
           width: 25px;
+        }
+        .box{
+          position: absolute;
+          left: 100%;
+          top: 0;
+          input{
+            height: 30px;
+            border: 1px solid $main-color;
+
+          }
         }
       }
 

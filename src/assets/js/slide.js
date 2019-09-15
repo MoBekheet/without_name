@@ -15,6 +15,8 @@
         site_of_the_day: body.querySelector("section#site_of_the_day"),
         close: site_of_the_day.querySelector("#close"),
         items: site_of_the_day.querySelector("#items"),
+        followers: site_of_the_day.querySelector(".followers"),
+        boxLeft: site_of_the_day.querySelector("#box_left"),
         image: items.querySelectorAll(".item__img"),
         overlay: site_of_the_day.querySelector("a.overlay"),
         caption: site_of_the_day.querySelector("#caption"),
@@ -204,7 +206,18 @@
       });
     }
     showCaption() {
-      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+      [...this.DOM.followers.querySelectorAll("li")].forEach((user,index) =>{
+        TweenMax.to(user, .8, {
+          ease: Expo.easeOut,
+          delay: index * .05,
+          startAt: { y: '0%', opacity: 0 },
+          y: '0%',
+          opacity: 1,
+          pointerEvents: "visible"
+        });
+      });
+
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite,this.DOM.boxLeft], .8, {
         ease: Back.easeOut,
         pointerEvents: "visible",
         startAt: { y: '100%', opacity: 0 },
@@ -213,7 +226,17 @@
       });
     }
     closeCaption() {
-      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+      [...this.DOM.followers.querySelectorAll("li")].forEach((user,index) =>{
+        TweenMax.to(user, .8, {
+          ease: Expo.easeIn,
+          delay: index * .05,
+          startAt: { y: '0%', opacity: 1 },
+          y: '0%',
+          pointerEvents: "none",
+          opacity: 0
+        });
+      });
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite,this.DOM.boxLeft], .8, {
         ease: Back.easeIn,
         pointerEvents: "none",
         startAt: { y: '0%', opacity: 1 },

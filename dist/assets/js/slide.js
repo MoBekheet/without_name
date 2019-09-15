@@ -37,6 +37,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         site_of_the_day: body.querySelector("section#site_of_the_day"),
         close: site_of_the_day.querySelector("#close"),
         items: site_of_the_day.querySelector("#items"),
+        followers: site_of_the_day.querySelector(".followers"),
+        boxLeft: site_of_the_day.querySelector("#box_left"),
         image: items.querySelectorAll(".item__img"),
         overlay: site_of_the_day.querySelector("a.overlay"),
         caption: site_of_the_day.querySelector("#caption"),
@@ -290,7 +292,25 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.showCaption = function showCaption() {
-      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+      var _this8 = this;
+
+      _toConsumableArray(this.DOM.followers.querySelectorAll("li")).forEach(function (user, index) {
+        _newArrowCheck(this, _this8);
+
+        TweenMax.to(user, .8, {
+          ease: Expo.easeOut,
+          delay: index * .05,
+          startAt: {
+            y: '0%',
+            opacity: 0
+          },
+          y: '0%',
+          opacity: 1,
+          pointerEvents: "visible"
+        });
+      }.bind(this));
+
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite, this.DOM.boxLeft], .8, {
         ease: Back.easeOut,
         pointerEvents: "visible",
         startAt: {
@@ -303,7 +323,25 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.closeCaption = function closeCaption() {
-      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite], .8, {
+      var _this9 = this;
+
+      _toConsumableArray(this.DOM.followers.querySelectorAll("li")).forEach(function (user, index) {
+        _newArrowCheck(this, _this9);
+
+        TweenMax.to(user, .8, {
+          ease: Expo.easeIn,
+          delay: index * .05,
+          startAt: {
+            y: '0%',
+            opacity: 1
+          },
+          y: '0%',
+          pointerEvents: "none",
+          opacity: 0
+        });
+      }.bind(this));
+
+      TweenMax.to([this.DOM.heading, this.DOM.data, this.DOM.btnSubmitYourSite, this.DOM.boxLeft], .8, {
         ease: Back.easeIn,
         pointerEvents: "none",
         startAt: {
@@ -316,10 +354,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.swiper = function swiper() {
-      var _this8 = this;
+      var _this10 = this;
 
       this.DOM.site_of_the_day.addEventListener("mousemove", function (e) {
-        _newArrowCheck(this, _this8);
+        _newArrowCheck(this, _this10);
 
         if (isVisible) {
           var offset = e.clientX / body.clientWidth * this.DOM.items.clientWidth - this.DOM.items.clientWidth / 3;
@@ -337,10 +375,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.noteSiteOpen = function noteSiteOpen() {
-      var _this9 = this;
+      var _this11 = this;
 
       noteSite.forEach(function (i, x) {
-        _newArrowCheck(this, _this9);
+        _newArrowCheck(this, _this11);
 
         TweenMax.to(".".concat(i.className.slice(8)), 1, {
           ease: Back.easeOut,
@@ -357,10 +395,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto.noteSiteClose = function noteSiteClose() {
-      var _this10 = this;
+      var _this12 = this;
 
       noteSite.forEach(function (i, x) {
-        _newArrowCheck(this, _this10);
+        _newArrowCheck(this, _this12);
 
         TweenMax.to(".".concat(i.className.slice(8)), .8, {
           ease: Back.easeIn,
@@ -463,10 +501,10 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     };
 
     _proto2.initEvents = function initEvents() {
-      var _this11 = this;
+      var _this13 = this;
 
       window.addEventListener('resize', function () {
-        _newArrowCheck(this, _this11);
+        _newArrowCheck(this, _this13);
 
         return this.resize();
       }.bind(this));
@@ -552,12 +590,12 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0));
 
   var preloadImages = function preloadImages() {
-    var _this12 = this;
+    var _this14 = this;
 
     _newArrowCheck(this, _this);
 
     return new Promise(function (resolve, reject) {
-      _newArrowCheck(this, _this12);
+      _newArrowCheck(this, _this14);
 
       imagesLoaded(document.querySelectorAll('.item__img'), {
         background: true
