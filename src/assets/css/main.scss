@@ -35,8 +35,11 @@ ul {
 
 #btnSubmitYourSite_absolute {
   position: fixed;
-  right: 60px;
   bottom: -100%;
+  right: 30px;
+  @include media-breakpoint-up(md) {
+    right: 60px;
+  }
   z-index: 189;
   opacity: 0;
   color: $white;
@@ -70,7 +73,11 @@ ul {
   }
 
   &.active {
-    bottom: 60px;
+    bottom: 30px;
+    @include media-breakpoint-up(md) {
+      bottom: 60px;
+    }
+
     opacity: 1;
   }
 }
@@ -843,6 +850,7 @@ footer {
   h1 {
     font-size: 14px;
     color: $main-color;
+
     @include media-breakpoint-up(md) {
       font-size: 25px;
     }
@@ -875,7 +883,7 @@ footer {
   ul {
     li {
       a {
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
       }
@@ -899,24 +907,28 @@ footer {
   opacity: 0;
   animation: fade 200ms ease-in-out both;
   -webkit-animation: fade 200ms ease-in-out both;
-  
+
   @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
     -webkit-backdrop-filter: saturate(180%) blur(10px);
     backdrop-filter: saturate(180%) blur(10px);
     background-color: rgba(15, 15, 15, 0.5);
 
   }
-  &.none{
+
+  &.none {
     display: none;
   }
+
   @keyframes fade {
-    from{
+    from {
       opacity: 0;
     }
-    to{
+
+    to {
       opacity: 1;
     }
   }
+
   * {
     font-family: $main-font-family;
   }
@@ -954,6 +966,7 @@ footer {
 
       .form {
         max-width: 430px;
+
         @include media-breakpoint-up(md) {}
 
         .head {
@@ -1112,9 +1125,11 @@ footer {
             opacity: .8;
           }
         }
-        p{
+
+        p {
           line-height: 1.7
         }
+
         .back {
           margin: 30px 0;
 
