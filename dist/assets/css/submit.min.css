@@ -65,4 +65,22 @@ display: block;
   .sub-label{
     margin:10px!important;
     }
+    input[type=text]{
+      margin-top:10px
+    }
+    select#inlineFormCustomSelect{
+      margin-top:10px
+    }
+    #submit .sub-t{
+      font-size:20px
+    }
+    .form-group {
+      margin-bottom:30px
+    }
+    .sub-step{
+      width:250px
+    }
+    .sub-step h6{
+      font-size:8px
+    }
 }
