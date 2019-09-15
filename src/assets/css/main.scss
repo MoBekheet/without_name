@@ -892,11 +892,31 @@ footer {
   width: 100%;
   position: fixed;
   background-color: rgba(15, 15, 15, 0.84);
-  z-index: 202;
+  z-index: 209;
   left: 0;
   top: 0;
   overflow-y: auto;
+  opacity: 0;
+  animation: fade 200ms ease-in-out both;
+  -webkit-animation: fade 200ms ease-in-out both;
+  
+  @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+    background-color: rgba(15, 15, 15, 0.5);
 
+  }
+  &.none{
+    display: none;
+  }
+  @keyframes fade {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
   * {
     font-family: $main-font-family;
   }
@@ -909,10 +929,6 @@ footer {
     z-index: 203;
     direction: rtl;
 
-    @supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
-      -webkit-backdrop-filter: saturate(180%) blur(10px);
-      backdrop-filter: saturate(180%) blur(10px);
-    }
 
     #modal {
       width: 100%;
@@ -939,9 +955,7 @@ footer {
       .form {
         max-width: 430px;
         @include media-breakpoint-up(md) {}
-&.none{
-  display: none;
-}
+
         .head {
           font-size: 14px;
 
@@ -1098,7 +1112,9 @@ footer {
             opacity: .8;
           }
         }
-
+        p{
+          line-height: 1.7
+        }
         .back {
           margin: 30px 0;
 

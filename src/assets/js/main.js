@@ -35,6 +35,10 @@
       body.querySelector("aside").classList.toggle('active');
       body.querySelector("#backdrop #hamburger > button").classList.toggle('tcon-transform');
     });
+    body.querySelector("main *").addEventListener("click", _ => {
+      body.querySelector("aside").classList.remove('active');
+      body.querySelector("#backdrop #hamburger > button").classList.remove('tcon-transform');
+    });
   })();
 
   const getMousePos = e => {
@@ -328,42 +332,41 @@
 
   }
 
-//   class Login {
-//     constructor(el) {
-//       this.DOM = { el: el };
-//       this.DOM.selected = [...this.DOM.el.querySelectorAll(".selected")];
-//       this.DOM.forms = [...this.DOM.el.querySelectorAll(".form")];
-//       this.observer = new IntersectionObserver((entries) => {
-//         entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0);
-//       });
-//       this.observer.observe(this.DOM.el);
+  class Login {
+    constructor(el) {
+      this.DOM = { el: el };
+      this.DOM.selected = [...this.DOM.el.querySelectorAll(".selected")];
+      this.DOM.forms = [...this.DOM.el.querySelectorAll(".form")];
+      this.DOM.btnLogin = [...body.querySelectorAll(".btn_login")];
+      this.DOM.closeBtn = this.DOM.el.querySelector(".closeBtn");
+      this.DOM.selected.forEach(i => {
+        i.addEventListener("click", e => {
+          this.DOM.forms.forEach(i => {
+            TweenMax.to(i, 0, {
+              opacity: 0,
+              display: "none"
+            });
+          });
+          TweenMax.to(body.querySelector(`.${e.target.getAttribute("data-class")}`), .3, {
+            opacity: 1,
+            display: "block"
+          });
+        });
+      });
 
-//         this.DOM.selected.forEach(i =>{
-//           i.addEventListener("click", e =>{
-//               let element = this.DOM.forms;
-//               let clas= `.${e.target.getAttribute("data-class")}`; 
-
-//               element.forEach(el => {
-//                 // if(el.classList.contains('none')){
-//                 //   console.log("go");
-//                 // }
-//               el.classList.add("none");
-//                 // el.querySelector(clas).toggle(".none")
-// console.log(clas);
-                
-//               })
-              
-//               Array.prototype.filter.call(el.parentNode.children, function(child){
-//                 return child !== el;
-//               });
-            
-//           });
-//         })
-//     }
-//   }
-//   [body.querySelector('#login')].forEach(el => {
-//     new Login(el);
-//   });
+      this.DOM.btnLogin.forEach(i => {
+        i.addEventListener("click", _ => {
+          this.DOM.el.classList.remove("none");
+        });
+      });
+      this.DOM.closeBtn.addEventListener("click", _ => {
+        this.DOM.el.classList.add("none");
+      });
+    }
+  }
+  [body.querySelector('#login')].forEach(el => {
+    new Login(el);
+  });
   const preloadImages = () => {
     return new Promise((resolve, reject) => {
       imagesLoaded(document.querySelectorAll('.item__img'), { background: true }, resolve);

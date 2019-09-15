@@ -72,6 +72,12 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       body.querySelector("aside").classList.toggle('active');
       body.querySelector("#backdrop #hamburger > button").classList.toggle('tcon-transform');
     }.bind(this));
+    body.querySelector("main *").addEventListener("click", function (_) {
+      _newArrowCheck(this, _this2);
+
+      body.querySelector("aside").classList.remove('active');
+      body.querySelector("#backdrop #hamburger > button").classList.remove('tcon-transform');
+    }.bind(this));
   }).bind(void 0)();
 
   var getMousePos = function getMousePos(e) {
@@ -559,13 +565,71 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
     return SmoothScroll;
   }();
 
-  var preloadImages = function preloadImages() {
+  var Login = function Login(el) {
     var _this17 = this;
+
+    this.DOM = {
+      el: el
+    };
+    this.DOM.selected = _toConsumableArray(this.DOM.el.querySelectorAll(".selected"));
+    this.DOM.forms = _toConsumableArray(this.DOM.el.querySelectorAll(".form"));
+    this.DOM.btnLogin = _toConsumableArray(body.querySelectorAll(".btn_login"));
+    this.DOM.closeBtn = this.DOM.el.querySelector(".closeBtn");
+    this.DOM.selected.forEach(function (i) {
+      var _this18 = this;
+
+      _newArrowCheck(this, _this17);
+
+      i.addEventListener("click", function (e) {
+        var _this19 = this;
+
+        _newArrowCheck(this, _this18);
+
+        this.DOM.forms.forEach(function (i) {
+          _newArrowCheck(this, _this19);
+
+          TweenMax.to(i, 0, {
+            opacity: 0,
+            display: "none"
+          });
+        }.bind(this));
+        TweenMax.to(body.querySelector(".".concat(e.target.getAttribute("data-class"))), .3, {
+          opacity: 1,
+          display: "block"
+        });
+      }.bind(this));
+    }.bind(this));
+    this.DOM.btnLogin.forEach(function (i) {
+      var _this20 = this;
+
+      _newArrowCheck(this, _this17);
+
+      i.addEventListener("click", function (_) {
+        _newArrowCheck(this, _this20);
+
+        this.DOM.el.classList.remove("none");
+      }.bind(this));
+    }.bind(this));
+    this.DOM.closeBtn.addEventListener("click", function (_) {
+      _newArrowCheck(this, _this17);
+
+      this.DOM.el.classList.add("none");
+    }.bind(this));
+  };
+
+  [body.querySelector('#login')].forEach(function (el) {
+    _newArrowCheck(this, _this);
+
+    new Login(el);
+  }.bind(void 0));
+
+  var preloadImages = function preloadImages() {
+    var _this21 = this;
 
     _newArrowCheck(this, _this);
 
     return new Promise(function (resolve, reject) {
-      _newArrowCheck(this, _this17);
+      _newArrowCheck(this, _this21);
 
       imagesLoaded(document.querySelectorAll('.item__img'), {
         background: true
@@ -574,7 +638,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
   }.bind(void 0);
 
   preloadImages().then(function () {
-    var _this18 = this;
+    var _this22 = this;
 
     _newArrowCheck(this, _this);
 
@@ -583,7 +647,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
       ease: Expo.easeInOut
     });
     setTimeout(function (_) {
-      _newArrowCheck(this, _this18);
+      _newArrowCheck(this, _this22);
 
       body.querySelector(".loading").className = 'd-none';
     }.bind(this), 1000);
