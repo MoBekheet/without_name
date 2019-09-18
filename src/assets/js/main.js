@@ -141,7 +141,7 @@
       [...this.DOM.link].forEach((link) => {
         link.addEventListener('mouseenter', e => {
           let target = e.target.getAttribute("data-hover") /*|| "اضغط هنا"*/;
-          this.DOM.title.innerHTML = target;
+          this.DOM.title.innerHTML = target == null ? "" : target;
           this.enter();
         });
         link.addEventListener('mouseleave', _ => this.leave());
@@ -149,7 +149,8 @@
       });
       [...this.DOM.dislink].forEach((i) => {
         i.addEventListener('mouseenter', e => {
-          this.DOM.title.innerHTML = e.target.getAttribute("data-hover");
+          let target = e.target.getAttribute("data-hover");
+          this.DOM.title.innerHTML = target == null ? "" : target;
           TweenMax.to(this.DOM.title, .2, {
             opacity: 1,
             ease: Back.easeOut

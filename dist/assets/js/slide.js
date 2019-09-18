@@ -301,7 +301,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           ease: Expo.easeOut,
           delay: index * .05,
           startAt: {
-            y: '0%',
+            y: '50%',
             opacity: 0
           },
           y: '0%',
@@ -335,7 +335,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
             y: '0%',
             opacity: 1
           },
-          y: '0%',
+          y: '50%',
           pointerEvents: "none",
           opacity: 0
         });

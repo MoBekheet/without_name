@@ -210,7 +210,7 @@
         TweenMax.to(user, .8, {
           ease: Expo.easeOut,
           delay: index * .05,
-          startAt: { y: '0%', opacity: 0 },
+          startAt: { y: '50%', opacity: 0 },
           y: '0%',
           opacity: 1,
           pointerEvents: "visible"
@@ -231,7 +231,7 @@
           ease: Expo.easeIn,
           delay: index * .05,
           startAt: { y: '0%', opacity: 1 },
-          y: '0%',
+          y: '50%',
           pointerEvents: "none",
           opacity: 0
         });

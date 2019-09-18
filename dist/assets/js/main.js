@@ -258,7 +258,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
           _newArrowCheck(this, _this7);
 
           var target = e.target.getAttribute("data-hover");
-          this.DOM.title.innerHTML = target;
+          this.DOM.title.innerHTML = target == null ? "" : target;
           this.enter();
         }.bind(this));
         link.addEventListener('mouseleave', function (_) {
@@ -281,7 +281,8 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
         i.addEventListener('mouseenter', function (e) {
           _newArrowCheck(this, _this8);
 
-          this.DOM.title.innerHTML = e.target.getAttribute("data-hover");
+          var target = e.target.getAttribute("data-hover");
+          this.DOM.title.innerHTML = target == null ? "" : target;
           TweenMax.to(this.DOM.title, .2, {
             opacity: 1,
             ease: Back.easeOut
